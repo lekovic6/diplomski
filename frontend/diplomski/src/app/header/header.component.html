@@ -1,0 +1,47 @@
+<header>
+    <div class="logo"> 
+        <a *ngIf="userRole === '' " [routerLink]="['/']"> IBooksDb </a> <!-- Neulogovani korisnik-->
+        <a *ngIf="userRole === 'user'" [routerLink]="['/']"> IBooksDb </a> <!-- Klijent korisnik-->
+        <a *ngIf="userRole === 'admin'" [routerLink]="['/']"> IBooksDb </a> <!-- Admin korisnik-->
+    </div>
+
+    <!--- Categories menu  -->
+    <nav class="categories-menu">
+        <div class="dropdown">
+            <button class="dropbtn">Categories</button>
+            <div class="dropdown-content">
+                <a *ngFor="let category of allCategories" [routerLink]="['/categorySearchPage', category.categoryName]">
+                    {{ category.showName }}
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <nav class="user-menu" *ngIf="isLoggedIn | async">
+        <span class="username">{{ username }}</span>
+        <button (click)="logout()" class="logout-btn">Logout</button>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+
+            <div class="dropdown-content">
+                <a *ngIf="userRole === 'user'" [routerLink]="['/clientProfile', username]">Profile</a>
+                <a *ngIf="userRole === 'user'" [routerLink]="['/clientPlaces', username]">MyReadList</a>
+
+
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminAllUsers']">All users</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminAddUser']">Add user</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminAllJobs']">All jobs</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminWorkerRequests']">Worker requests</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminCancellationRequests']">Cancellation requests</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminRegistrationRequests']">Registration requests</a>
+            </div>
+            
+        </div>
+    </nav>  
+
+    <nav class="user-menu" *ngIf="!(isLoggedIn | async)">
+        <a routerLink="loginUser" class="user-menu-link">Login!</a>
+        <a routerLink="registration" class="user-menu-link">Register!</a>
+    </nav>
+</header>

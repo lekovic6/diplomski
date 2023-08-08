@@ -1,0 +1,48 @@
+<div class="container">
+    
+    <!-- search bar  -->
+    <div class = "row searchBarRow justify-content-sm-center">
+        <div class="col col-sm">
+            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search..." style="width: 100%;">
+        </div>
+        
+        <div class="col col-sm-1" >
+            <button class="button" (click)="search()" style="width: 100%;">Search</button>
+        </div>
+    </div>
+
+    //PREPRAVI DA NADJE ONE CIJI TITLE SADRZI SEARCHPARAM   
+    //DODAJ DA SEARCH BOOKS MOZE I DA FILTIRA I PO GENRE-U
+
+    <h2>{{genreToShow}} books:
+        dohvati genre da ispisujes showName umesto categoryName
+    </h2>
+    <div *ngFor="let book of booksToShow" class="row justify-content-sm-center" >
+
+        <div class="col col-sm-2" style="background-color: rgb(0, 255, 76);">
+            <img class="card-image" [src]="book.coverData64" alt="Book Image">
+        </div>
+
+        <div class="col col-sm"><!-- zauzece koliko moze do 12-->
+
+            <div class="row" style="background-color: rgb(255, 0, 191);">
+                {{book.title}}
+            </div>
+            
+            <div class="row" style="background-color: rgb(0, 195, 255);">
+                by: ovo doraditi da bude u istom redu - pitaj chatGPT-IJA
+                <p *ngFor="let author of book.authors">
+                    {{author.name}}
+                </p>
+            </div>
+
+            <div class="row" style="background-color: rgb(38, 0, 255);">
+                <p *ngIf="book.description == null">This book doesn't have a description yet.</p>
+                <p *ngIf="book.description != null">{{book.description}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

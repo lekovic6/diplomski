@@ -1,0 +1,96 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: #0165d8;
+  color: #ffffff;
+}
+  
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  /* promeniti boju loga*/
+  color: #FF4500;
+}
+  
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #FF6347;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background: #FF4500;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: #FF6347;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 5px;
+}
+
+.dropbtn:hover {
+  background: #FF4500;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #424242;
+  min-width: 200px;
+  padding: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 5px 0;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.dropdown-content a:hover {
+  color: #FF6347;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.user-menu-link {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.user-menu-link:hover {
+  text-decoration: underline;
+}

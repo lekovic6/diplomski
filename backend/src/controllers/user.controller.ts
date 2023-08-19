@@ -24,10 +24,10 @@ export class UserController {
         })
     }
 
-    getClientByUsername(req:express.Request, res:express.Response){
-        let clientUsername = req.body.username
+    getUserByUsername(req:express.Request, res:express.Response){
+        let username = req.body.username
 
-        User.findOne({'username':clientUsername}, (err, user)=>{
+        User.findOne({'username':username}, (err, user)=>{
             if(err) console.log(err);
             else {
                 //console.log('Retrieved user:', user);
@@ -137,7 +137,72 @@ export class UserController {
         });
     }
 
+    addToFavouritesList(req:express.Request, res:express.Response){
+        let username = req.body.username;
+        let bookId = req.body.bookId;
 
+        //console.log(username);
+        //console.log(bookId);
+
+
+        User.collection.updateOne({ 'username': username },
+            {
+                $addToSet: {
+                    'favouritesList': bookId,
+                }
+            }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ 'message': 'Error in adding to favourites list.' });
+                } else {
+                    res.status(200).json({ 'message': 'updated' });   
+                }
+            }
+        );
+    }
+
+    removeFromFavouritesList(req:express.Request, res:express.Response){
+        let username = req.body.username;
+        let bookId = req.body.bookId;
+    
+        User.collection.updateOne({ 'username': username },
+            {
+                $pull: {
+                    'favouritesList': bookId
+                }
+            }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ 'message': 'Error in removing from favourites list.' });
+                } else {
+                    res.status(200).json({ 'message': 'updated' });   
+                }
+            }
+        );
+    }
+
+    updateUserDetails(req: express.Request, res: express.Response) {
+        let user = req.body.user;
+    
+        User.collection.updateOne({ 'username': user.username },
+            {
+                $set: {
+                    'firstname': user.firstname,
+                    'lastname': user.lastname, // Fixed this line
+                    'email': user.email,
+                    'profilePicture': user.profilePicture
+                }
+            }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ 'message': 'Error in updating user details.' }); // Changed error message
+                } else {
+                    res.status(200).json({ 'message': 'updated' });   
+                }
+            }
+        );
+    }
+    
 
 
 }

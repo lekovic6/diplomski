@@ -9,6 +9,7 @@ const BookSchema = new Schema({
     title: String,
     authors: [
         {
+            _id: mongoose.Schema.Types.ObjectId,
             name: String,
             key: String
         }
@@ -19,7 +20,19 @@ const BookSchema = new Schema({
 
     cover_id: Number,
     coverData64: String,
-    coverContentType64: String
+    coverContentType64: String,
+
+    reviews:[
+        {
+            username:String,
+            rating:Number,
+            comment:String,
+
+            pending:Boolean,
+            accepted:Boolean,
+            declined:Boolean,
+        }
+    ]
 })
 
 

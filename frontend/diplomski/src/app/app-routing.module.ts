@@ -6,6 +6,16 @@ import { LoginUserComponent } from './login-user/login-user.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CategorySearchPageComponent } from './category-search-page/category-search-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
+import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { EditBookDetailsComponent } from './edit-book-details/edit-book-details.component';
+import { EditAuthorDetailsComponent } from './edit-author-details/edit-author-details.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { AddAuthorComponent } from './add-author/add-author.component';
+import { MyListComponent } from './my-list/my-list.component';
+import { PendingReviewsComponent } from './pending-reviews/pending-reviews.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -16,6 +26,20 @@ const routes: Routes = [
   {path: 'loginUser', component:LoginUserComponent},
   {path: 'loginAdmin', component:LoginAdminComponent},
 
+  {path: 'bookDetails/:bookId', component:BookDetailsComponent},
+  {path: 'authorDetails/:authorId', component:AuthorDetailsComponent},
+
+  {path: 'editBookDetails/:bookId', component:EditBookDetailsComponent},
+  {path: 'editAuthorDetails/:authorId', component:EditAuthorDetailsComponent},
+  {path: 'addBook', component:AddBookComponent},
+  {path: 'addAuthor', component:AddAuthorComponent},
+  
+  {path: 'myList', component:MyListComponent},
+  {path: 'pendingReviews', component:PendingReviewsComponent},
+  
+  {path: 'profileDetails', component:ProfileDetailsComponent},
+  {path: 'changePassword', component:ChangePasswordComponent},
+  
 ];
 
 @NgModule({

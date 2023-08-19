@@ -14,8 +14,7 @@ export class User{
         contentType: string;
     };
 
-    // msm da mi nece trebati
-    verifiedByAdmin:boolean;
-    declined:boolean;
+    favouritesList:string[];
+
 }
     

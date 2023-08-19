@@ -14,6 +14,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { CategorySearchPageComponent } from './category-search-page/category-search-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { AuthorDetailsComponent } from './author-details/author-details.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { EditBookDetailsComponent } from './edit-book-details/edit-book-details.component';
+import { EditAuthorDetailsComponent } from './edit-author-details/edit-author-details.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { AddAuthorComponent } from './add-author/add-author.component';
+import { MyListComponent } from './my-list/my-list.component';
+import { PendingReviewsComponent } from './pending-reviews/pending-reviews.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +36,16 @@ import { SearchPageComponent } from './search-page/search-page.component';
     FooterComponent,
     BookDetailsComponent,
     CategorySearchPageComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    AuthorDetailsComponent,
+    EditBookDetailsComponent,
+    EditAuthorDetailsComponent,
+    AddBookComponent,
+    AddAuthorComponent,
+    MyListComponent,
+    PendingReviewsComponent,
+    ProfileDetailsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +53,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,7 +10,6 @@
             <button class="button" (click)="search()" style="width: 100%;">Search</button>
         </div>
     </div>
-    //PREPRAVI DA NADJE ONE CIJI TITLE SADRZI SEARCHPARAM
 
     <!-- banner start  -->
     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -20,8 +19,9 @@
                 <img  [src]="featBook.coverData64" class="d-block w-100" alt="...">
 
                 <div class="carousel-caption d-none d-md-block">
-                    <h2>{{featBook.title}}</h2>
-                    <p>{{featBook.description}}</p>
+                    <h2 [routerLink]="['/bookDetails', featBook._id]">{{featBook.title}}</h2>
+                    <p *ngIf="featBook.description && featBook.description.length <= 500">{{featBook.description}}</p>
+                    <p *ngIf="featBook.description && featBook.description.length > 500">{{featBook.description.substring(0, 500)}}...</p>
                 </div>
             </div>
         </div>
@@ -55,8 +55,8 @@
             <h4 class="text-dark">Top picks</h4>
             
             <div class="rowposter mt-1 p-1 mb-4">
-                <ng-container *ngFor="let featBook of featuredBooks">
-                    <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image" [routerLink]="['/bookDetails', featBook._id]">
+                <ng-container *ngFor="let book of featuredBooks">
+                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
                 </ng-container>
             </div>
         </div>
@@ -66,8 +66,8 @@
             <h4 class="text-dark">Science fiction</h4>
             
             <div class="rowposter mt-1 p-1 mb-4">
-                <ng-container *ngFor="let sciFiBook of sciFiBooks">
-                    <img class="rowimg largeposter" [src]="sciFiBook.coverData64" alt="Book Image" [routerLink]="['/bookDetails', sciFiBook._id]">
+                <ng-container *ngFor="let book of sciFiBooks">
+                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
                 </ng-container>
             </div>
         </div>

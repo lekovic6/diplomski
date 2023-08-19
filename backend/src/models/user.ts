@@ -19,9 +19,8 @@ const UserSchema = new Schema({
         contentType: String
     },
 
-    // ne znam dal cu ovo da imam iskr
-    verifiedByAdmin:Boolean,
-    declined:Boolean
+    favouritesList:[mongoose.Schema.Types.ObjectId],
+
 })
 
 

@@ -27,9 +27,9 @@ class UserController {
             }
         });
     }
-    getClientByUsername(req, res) {
-        let clientUsername = req.body.username;
-        user_1.default.findOne({ 'username': clientUsername }, (err, user) => {
+    getUserByUsername(req, res) {
+        let username = req.body.username;
+        user_1.default.findOne({ 'username': username }, (err, user) => {
             if (err)
                 console.log(err);
             else {
@@ -125,6 +125,61 @@ class UserController {
             else {
                 console.log(result);
                 res.json({ message: 'deleted' });
+            }
+        });
+    }
+    addToFavouritesList(req, res) {
+        let username = req.body.username;
+        let bookId = req.body.bookId;
+        //console.log(username);
+        //console.log(bookId);
+        user_1.default.collection.updateOne({ 'username': username }, {
+            $addToSet: {
+                'favouritesList': bookId,
+            }
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ 'message': 'Error in adding to favourites list.' });
+            }
+            else {
+                res.status(200).json({ 'message': 'updated' });
+            }
+        });
+    }
+    removeFromFavouritesList(req, res) {
+        let username = req.body.username;
+        let bookId = req.body.bookId;
+        user_1.default.collection.updateOne({ 'username': username }, {
+            $pull: {
+                'favouritesList': bookId
+            }
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ 'message': 'Error in removing from favourites list.' });
+            }
+            else {
+                res.status(200).json({ 'message': 'updated' });
+            }
+        });
+    }
+    updateUserDetails(req, res) {
+        let user = req.body.user;
+        user_1.default.collection.updateOne({ 'username': user.username }, {
+            $set: {
+                'firstname': user.firstname,
+                'lastname': user.lastname,
+                'email': user.email,
+                'profilePicture': user.profilePicture
+            }
+        }, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ 'message': 'Error in updating user details.' }); // Changed error message
+            }
+            else {
+                res.status(200).json({ 'message': 'updated' });
             }
         });
     }

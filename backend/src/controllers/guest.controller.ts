@@ -18,7 +18,7 @@ export class GuestController {
                 contentType: req.body.base64ContentType
             },
 
-
+            favouritesList: req.body.favouritesList,
         })  
 
         newClient.save().then(user=>{
@@ -27,36 +27,6 @@ export class GuestController {
             res.status(400).json({'message': 'error'});
         });
     }
-
-    registerAgency(req:express.Request, res:express.Response){
-        let newAgency = new User({
-            username:req.body.username,
-            password:req.body.password,
-            email:req.body.email,
-            role:req.body.role,
-            
-            agencyName:req.body.agencyName,
-            agencyAdress:req.body.agencyAdress,
-            tid:req.body.tid,
-            description:req.body.description,
-            maxNumberOfWorkers:req.body.maxNumberOfWorkers,
-
-            profilePicture:{
-                data: req.body.base64Data,
-                contentType: req.body.base64ContentType
-            },
-
-            verifiedByAdmin: false,
-            declined:false
-        })  
-
-        newAgency.save().then(agency=>{
-            res.status(200).json({'message':'user added'});
-        }).catch(err=>{
-            res.status(400).json({'message': 'error'});
-        });
-    }
-    
 
     uniqueUsername(req:express.Request, res:express.Response){
         let newUsername = req.body.username;
@@ -78,7 +48,7 @@ export class GuestController {
         let username = req.body.username;
         let password = req.body.password;
 
-        User.findOne({'username':username, 'password':password, 'role':{$in: ['user']} }, (err, user)=>{
+        User.findOne({'username':username, 'password':password, 'role':'user' }, (err, user)=>{
             if(err) console.log(err);
             else res.json(user);
         })

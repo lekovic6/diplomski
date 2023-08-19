@@ -17,9 +17,7 @@ const UserSchema = new Schema({
         data: String,
         contentType: String
     },
-    // ne znam dal cu ovo da imam iskr
-    verifiedByAdmin: Boolean,
-    declined: Boolean
+    favouritesList: [mongoose_1.default.Schema.Types.ObjectId],
 });
 exports.default = mongoose_1.default.model("User", UserSchema, 'users');
 //# sourceMappingURL=user.js.map

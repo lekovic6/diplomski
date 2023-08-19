@@ -7,10 +7,6 @@ guestRouter.route('/registerClient').post(
     (req, res) => new GuestController().registerClient(req, res)
 )
 
-guestRouter.route('/registerAgency').post(
-    (req, res) => new GuestController().registerAgency(req, res)
-)
-
 guestRouter.route('/uniqueUsername').post(
     (req, res) => new GuestController().uniqueUsername(req, res)
 )

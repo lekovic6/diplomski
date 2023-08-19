@@ -1,1 +1,123 @@
-<p>book-details works!</p>
+<div class="container">
+
+    <img class="rowimg largeposter" [src]="bookToShow.coverData64" alt="Book Image">
+    <br>
+
+    <div *ngIf="currentLoggedUser.role == 'admin' ">
+        <button [routerLink]="['/editBookDetails', bookId]">Edit book</button>
+        <button (click)="delteBook()">Delete book</button>
+    </div>
+
+    <div *ngIf="currentLoggedUser.role == 'user' ">
+        <button *ngIf="!isInReadingList" (click)="addToFavouritesList()">add to myReadlist</button>
+        <button *ngIf="isInReadingList" (click)="removeFromFavouritesList()">remove from myReadlist</button>
+    </div>
+
+    <br>
+    <strong>Title:</strong>
+    {{bookToShow.title}}
+    <br>
+    <strong>Description:</strong>
+
+    <span *ngIf="bookToShow.description != null"> {{bookToShow.description}} </span>
+    <span *ngIf="bookToShow.description == null"> This book does not have a description yet! </span>
+    <br>
+
+    <strong>Genre: </strong>
+    <a [routerLink]="['/categorySearchPage', bookToShow.genre]">{{categoryShowName}}</a>
+
+    <br>
+    <strong>Authors:</strong>
+    <div class="authors">
+        <ul>
+            <li *ngFor="let author of bookToShow.authors">
+                <a [routerLink]="['/authorDetails', author._id]">
+                    {{author.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <strong>First publish year:</strong> {{bookToShow.first_publish_year}}
+    <br>
+    <strong>ISBN:</strong>
+    <span *ngIf="bookToShow.isbn != null"> {{bookToShow.isbn}} </span>
+    <span *ngIf="bookToShow.isbn == null"> not available! </span>
+
+    <br>
+    <br>
+
+
+    <!-- Reviews section -->
+
+
+    <div class="reviews">
+        <h4>User reviews</h4>
+
+
+
+        <!-- Logged User -->
+
+        <!-- 1. -->
+        <!-- Doesnt have a review for this book - Leave a review -->
+        <div *ngIf="isUserLoggedIn == true && hasReview == false">
+            Leave a review!
+            <textarea name="comment" cols="50" rows="5" [(ngModel)]="myReview.comment"></textarea>
+            Rate it from 1 to 10 stars : <input type="number" name="rating" [(ngModel)]="myReview.rating">
+            <button (click)="leaveReview()">Leave a review</button>
+        </div>
+
+        <!-- 2. -->
+        <!-- Already has a review for this book and can change/delete his review - Edit review -->
+        <div *ngIf="isUserLoggedIn == true && hasReview == true">
+            My review: <br>
+            <textarea name="comment" id="comment" cols="50" rows="5"  [(ngModel)]="myReview.comment"></textarea>
+            <br>
+            stars : <input type="number" name="rating" [(ngModel)]="myReview.rating">
+            <br>
+            <button (click)="saveReviewChanges()">Save changes</button>
+            <button (click)="deleteReview()">Delete</button>
+        </div>
+
+
+        
+
+        <!-- Other reviews (only this when user is NOT logged in)-->
+        <div *ngIf="isUserLoggedIn == false">
+            Please log into your account to leave a review!
+        </div>
+
+        <h4>Other reviews:</h4>
+        <div *ngFor="let review of bookToShow.reviews" class="eachReview">
+            <ng-container *ngIf="review.accepted == true">
+                "star" {{review.rating}} / 10
+                <br>
+                &nbsp;&nbsp;&nbsp;
+                by:{{review.username}}
+                <br>
+                {{review.comment}}
+                <br>
+            </ng-container>
+        </div>
+        <!-- No reviews -->
+        <div *ngIf="noReviewsToShow">
+            There are no reviews for this book!
+        </div>
+
+    </div>
+
+    <div class="container mt-3 mb-5 p-4">
+        <div class="row">
+            <h4 class="text-dark">You might also like</h4>
+            <div class="rowposter mt-1 p-1 mb-4">
+                <ng-container *ngFor="let book of similarBooks">
+                    <ng-container *ngIf="book && book.coverData64">
+                        <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                            [routerLink]="['/bookDetails', book._id]">
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+</div>

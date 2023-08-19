@@ -25,16 +25,14 @@
             <button class="dropbtn">Menu</button>
 
             <div class="dropdown-content">
-                <a *ngIf="userRole === 'user'" [routerLink]="['/clientProfile', username]">Profile</a>
-                <a *ngIf="userRole === 'user'" [routerLink]="['/clientPlaces', username]">MyReadList</a>
+                <a *ngIf="userRole === 'user'" [routerLink]="['/profileDetails']">My profile</a>
+                <a *ngIf="userRole === 'user'" [routerLink]="['/myList']">My reading list</a>
 
 
-                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminAllUsers']">All users</a>
-                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminAddUser']">Add user</a>
-                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminAllJobs']">All jobs</a>
-                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminWorkerRequests']">Worker requests</a>
-                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminCancellationRequests']">Cancellation requests</a>
-                <a *ngIf="userRole === 'admin'" [routerLink]="['/adminRegistrationRequests']">Registration requests</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/addBook']">Add new book</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/addAuthor']">Add new author</a>
+                <a *ngIf="userRole === 'admin'" [routerLink]="['/pendingReviews']">Pending reviews</a>
+                
             </div>
             
         </div>

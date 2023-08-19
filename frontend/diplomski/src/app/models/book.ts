@@ -4,12 +4,12 @@ export class Book{
     isbn:string;
 
     title: string;
-    authors: [
-        {
-            name: string,
-            key: string
-        }
-    ];
+    authors: {
+        // ovde cu morat dodat _id authora
+        _id: string,
+        name: string,
+        key: string
+    }[];
     description:string;
 
     genre:string;
@@ -18,5 +18,16 @@ export class Book{
     cover_id: number;
     coverData64: string;
     coverContentType64: string;
+
+    reviews:[Review]
 }
     
+export class Review{
+    username:string;
+    rating:number;
+    comment:string;
+
+    pending:boolean;
+    accepted:boolean;
+    declined:boolean;
+}

@@ -1,0 +1,52 @@
+<div class="container">
+
+    <img class="rowimg largeposter" [src]="authorToAdd.coverData64" alt="Book Image">
+    <br>
+    Choose book cover picture:<input type="file" id="coverPicutre" accept=".jpg, .png" (change)="onFileChange($event)">
+    <div *ngIf="dimensionErrorFlag" class="error-message">
+        {{dimensionErrorMassage}}
+    </div>
+    <br>
+
+    <strong>Name: </strong>
+    <input type="text" name="name" [(ngModel)]="authorToAdd.name">
+
+
+
+
+    <strong>Biography: </strong>
+    <input type="text" name="bio" [(ngModel)]="authorToAdd.bio">
+
+    <br>
+
+    <strong>Birth date: </strong>
+    <input type="text" name="birth_date" [(ngModel)]="authorToAdd.birth_date">
+
+    <br>
+
+    <strong>Death date: </strong>
+    <input type="text" name="death_date" [(ngModel)]="authorToAdd.death_date">
+
+    <h4>Links:</h4>
+    <div class="links">
+        <ul>
+            <li *ngFor="let link of authorToAdd.links; let i = index">
+                <strong>Title: </strong>
+                <input type="text" name="title" [(ngModel)]="link.title">
+                <strong>URL: </strong>
+                <input type="text" name="url" [(ngModel)]="link.url">
+
+                <!-- Add 'X' button for removing link -->
+                <button (click)="removeLink(i)">X</button>
+            </li>
+        </ul>
+
+        <!-- Button to add a new link -->
+        <button (click)="addLink()">Add a Link</button>
+    </div>
+
+    <button (click)="insertAuthor()">Add author</button>
+
+
+
+</div>

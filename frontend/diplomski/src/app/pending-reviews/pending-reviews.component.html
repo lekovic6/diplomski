@@ -1,0 +1,13 @@
+<div *ngFor="let book of booksWithPendingReviews">
+    <h2>{{ book.title }}</h2>
+    <div *ngFor="let review of book.reviews">
+        <p><strong>Reviewed by:</strong> {{ review.username }}</p>
+        <p><strong>Comment:</strong> {{ review.comment }}</p>
+        <button (click)="acceptReview(book._id, review.username)">Accept</button>
+        <button (click)="declineReview(book._id, review.username)">Decline</button>
+    </div>
+</div>
+
+<div *ngIf="booksWithPendingReviews.length == 0">
+    <h2>There are currently no pending reviews!</h2>
+</div>

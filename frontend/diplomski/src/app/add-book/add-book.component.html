@@ -1,0 +1,73 @@
+<div class="container">
+    <img class="rowimg largeposter" [src]="bookToAdd.coverData64" alt="Book Image">
+    <br>
+    Choose book cover picture:<input type="file" id="coverPicutre" accept=".jpg, .png" (change)="onFileChange($event)">
+    <br>
+
+    <strong>Title:</strong>
+    <input type="text" name="title" [(ngModel)]="bookToAdd.title">
+
+    <br>
+
+    <strong>Description:</strong>
+    
+    <input type="textarea" name="description" [(ngModel)]="bookToAdd.description">
+
+    <br>
+
+    <strong>Genre:</strong>
+    <select name="genre" [(ngModel)]="bookToAdd.genre">
+        <option *ngFor="let cat of allCategories" [value]="cat.categoryName">
+            {{cat.showName}}
+        </option>
+    </select>
+
+    <br>
+    <strong>Authors:</strong>
+    <div class="authors">
+        <ul>
+            <li *ngFor="let author of bookToAdd.authors; let i = index">
+                {{author.name}}
+
+                <!-- Add a delete button next to each author -->
+                <button (click)="deleteAuthor(i)">x</button>
+            </li>
+        </ul>
+
+
+        <!-- Add a "+" button below the list of authors -->
+        <button (click)="addAuthorExpand()">+</button>
+
+
+        <!-- Search bar and add new author form (hidden initially) -->
+        <div *ngIf="addingAuthor">
+            <input type="text" [(ngModel)]="searchParam" (keyup)="searchAuthor()" placeholder="Search for author...">
+            
+                <div *ngFor="let author of searchResults | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" >
+                    <img class="card-image" [src]="author.coverData64" alt="Author Image">
+                    {{author.name}}
+                    <button (click)="addExistingAuthor(author)">Add author</button>
+
+                </div>
+
+            <!-- Pagination Controls -->
+            <div class="d-flex">
+                <pagination-controls  (pageChange)="currentPage = $event; searchAuthor()"></pagination-controls>
+            </div>
+
+  
+        </div>
+    </div>
+
+
+    <strong>First publish year:</strong> 
+    
+    <input type="text" [(ngModel)]="bookToAdd.first_publish_year">
+    <br>
+    <strong>ISBN:</strong>
+    <input type="text" [(ngModel)]="bookToAdd.isbn">
+    <br>
+
+    <button (click)="saveChanges()">Save changes</button>
+
+</div>

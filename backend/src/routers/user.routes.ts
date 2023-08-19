@@ -12,8 +12,8 @@ userRouter.route('/getAgencyByUsername').post(
     (req, res) => new UserController().getAgencyByUsername(req, res)
 )
 
-userRouter.route('/getClientByUsername').post(
-    (req, res) => new UserController().getClientByUsername(req, res)
+userRouter.route('/getUserByUsername').post(
+    (req, res) => new UserController().getUserByUsername(req, res)
 )
 
 userRouter.route('/updateClientDetails').post(
@@ -37,5 +37,18 @@ userRouter.route('/deleteUser').post(
 )
 
 
+
+
+userRouter.route('/addToFavouritesList').post(
+    (req, res) => new UserController().addToFavouritesList(req, res)
+)
+
+userRouter.route('/removeFromFavouritesList').post(
+    (req, res) => new UserController().removeFromFavouritesList(req, res)
+)
+
+userRouter.route('/updateUserDetails').post(
+    (req, res) => new UserController().updateUserDetails(req, res)
+)
 
 export default userRouter;

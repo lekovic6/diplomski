@@ -23,12 +23,10 @@ export class LoginAdminComponent {
 
         if (user.role === 'admin'){
           
-
           localStorage.setItem('user', JSON.stringify(user));
           this.loginService.isLoggedinSubject.next(true); // sending info to loginService that someone is logged in
 
           this.router.navigate(['/']);
-          //this.router.navigate(['/adminAllUsers']);
         }
         else{
           alert('Wrong credentials!');

@@ -1,0 +1,38 @@
+<div class="container">
+
+    <div class="profile-container">
+        <div class="image-container">
+            <img [src]="'data:' + user.profilePicture?.contentType + ';base64, ' + user.profilePicture?.data" alt="slika" height="100" width="100">
+            <label for="profilePicture">Profile Picture:</label>
+
+            <div *ngIf="dimensionErrorFlag" class="error-message">
+                {{dimensionErrorMassage}}
+            </div>
+        </div>
+        Choose new picure:<input type="file" id="profilePicture" accept=".jpg, .png" (change)="onFileChange($event)">
+
+        <div class="user-details">
+            <input type="text" value="{{user.username}}" disabled />
+            <input type="text" value="{{user.email}}" disabled />
+        </div>
+
+        <div class="edit-details">
+            <div>
+                <label for="firstname">First name</label>
+                <input id="firstname" type="text" [(ngModel)]="user.firstname" />
+            </div>
+            <div>
+                <label for="lastname">Last name</label>
+                <input id="lastname" type="text" [(ngModel)]="user.lastname" />
+            </div>
+
+            
+            <div class="button-container">
+                <button class="edit-button" (click)="updateDetails()">Update Details</button>
+                <button class="edit-button" [routerLink]="['/changePassword']">Change Password</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

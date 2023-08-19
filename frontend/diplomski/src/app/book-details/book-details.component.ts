@@ -35,22 +35,24 @@ export class BookDetailsComponent {
           this.categoryShowName = category.showName;
         })
 
-        this.userService.getUserByUsername(this.loginService.getUser().username).subscribe((user:User)=>{
-          this.currentLoggedUser = user;
-          this.myReview.username = this.currentLoggedUser.username;
-
-          // Checking whether the book is in users favourties list
-          if (this.currentLoggedUser.favouritesList != null && this.currentLoggedUser.favouritesList.length > 0){
-            this.currentLoggedUser.favouritesList.forEach((bookid:String) => {
-              if (bookid == this.bookId){
-                this.isInReadingList = true;
-              }
-            });
-          }
-        });
-        
         this.isUserLoggedIn = this.loginService.isLoggedinSubject.getValue();
 
+        if (this.isUserLoggedIn){
+          this.userService.getUserByUsername(this.loginService.getUser().username).subscribe((user:User)=>{
+            this.currentLoggedUser = user;
+            this.myReview.username = this.currentLoggedUser.username;
+  
+            // Checking whether the book is in users favourties list
+            if (this.currentLoggedUser.favouritesList != null && this.currentLoggedUser.favouritesList.length > 0){
+              this.currentLoggedUser.favouritesList.forEach((bookid:String) => {
+                if (bookid == this.bookId){
+                  this.isInReadingList = true;
+                }
+              });
+            }
+          });
+        }
+        
         // Checking whether user already has a review for this book
         if (this.bookToShow.reviews != null && this.isUserLoggedIn == true){
           this.bookToShow.reviews.forEach(review => {
@@ -113,7 +115,7 @@ export class BookDetailsComponent {
     })
   }
 
-  delteBook(){
+  deleteBook(){
     this.bookService.deleteBook(this.bookId).subscribe(resp=>{
       if(resp["message"] = "deleted"){
         alert("Book has been deleted!")

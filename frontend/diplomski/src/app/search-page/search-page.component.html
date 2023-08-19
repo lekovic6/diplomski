@@ -26,8 +26,7 @@
     <div *ngIf="searchType == 'book'">
 
         <div *ngIf="booksToShow && booksToShow.length > 0">
-            <div *ngFor="let book of booksToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };"
-                class="row justify-content-sm-center book-card">
+            <div *ngFor="let book of booksToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center book-card">
 
                 <div class="col col-sm-2">
                     <img class="book-img" [src]="book.coverData64" alt="Book Image"
@@ -53,6 +52,7 @@
                             1000)}}...</p>
                     </div>
                 </div>
+                
             </div>
 
             <!-- Pagination Controls -->

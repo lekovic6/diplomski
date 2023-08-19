@@ -1,59 +1,62 @@
 <div class="container">
-    
+
     <!-- search bar  -->
-    <div class = "row searchBarRow justify-content-sm-center">
-        <div class="col col-sm">
-            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search..." style="width: 100%;">
+    <div class="row searchBarRow justify-content-sm-center">
+        <div class="col col-sm-10">
+            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search...">
         </div>
-        
-        <div class="col col-sm-1" >
-            <button class="button" (click)="searchGenre()" style="width: 100%;">Search</button>
+        <div class="col col-sm-2">
+            <button class="searchButton" (click)="searchGenre()">Search</button>
         </div>
     </div>
 
 
-    <h2>{{genreShowName}} books: </h2>
-    <div *ngIf="booksToShow && booksToShow.length > 0">
-        <div *ngFor="let book of booksToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center" >
+    <h2 >{{genreShowName}} books:</h2>
 
-            <div class="col col-sm-2" style="background-color: rgb(0, 255, 76);">
-                <img class="card-image" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
+    <!-- Show search result for BOOKS -->
+
+    <div *ngIf="booksToShow && booksToShow.length > 0">
+        <div *ngFor="let book of booksToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };"
+            class="row justify-content-sm-center book-card">
+
+            <div class="col col-sm-2">
+                <img class="book-img" [src]="book.coverData64" alt="Book Image"
+                    [routerLink]="['/bookDetails', book._id]">
             </div>
-    
-            <div class="col col-sm"><!-- zauzece koliko moze do 12-->
-    
-                <div class="row" style="background-color: rgb(255, 0, 191);" [routerLink]="['/bookDetails', book._id]">
-                    {{book.title}} 
-                    - DODAJ DA KAD HOVERUJEM PREKO IMENA DA SE PODVUCE IME - ili mozda da klikom na ceo card od knjige saljem na card details
+
+            <div class="col col-sm">
+                <div class="book-title" [routerLink]="['/bookDetails', book._id]">
+                    {{book.title}}
                 </div>
-                
-                <div class="row" style="background-color: rgb(0, 195, 255);">
-                    by: ovo doraditi da bude u istom redu - pitaj chatGPT-IJA
-                    <p *ngFor="let author of book.authors">
-                        {{author.name}}
-                    </p>
+
+                <div class="authorsRow">
+                    <span class="by-text">by: &nbsp;</span>
+                    <ng-container *ngFor="let author of book.authors; let i = index">
+                        <span [routerLink]="['/authorDetails', author._id]" class="authorLink">{{ author.name
+                            }}</span>{{ i < book.authors.length - 1 ? ',&nbsp;' : '' }} </ng-container>
                 </div>
-    
-                <div class="row" style="background-color: rgb(38, 0, 255);">
+
+                <div class="book-description">
                     <p *ngIf="book.description == null">This book doesn't have a description yet.</p>
                     <p *ngIf="book.description && book.description.length <= 1000">{{book.description}}</p>
-                    <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0, 1000)}}...</p>
+                    <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0,
+                        1000)}}...</p>
                 </div>
-    
             </div>
-    
         </div>
 
         <!-- Pagination Controls -->
         <div class="d-flex justify-content-center">
-            <pagination-controls  (pageChange)="currentPage = $event; searchGenre()"></pagination-controls>
+            <pagination-controls (pageChange)="currentPage = $event; searchGenre()"></pagination-controls>
         </div>
-
     </div>
 
+    <!-- Display this when there are no books to show -->
     <div *ngIf="!booksToShow || booksToShow.length === 0">
-        <h3>There are no books with this title. Try something else!</h3>
+        <h4>There are no books with this title. Try something else!</h4>
     </div>
-    
+
+    <!-- end of results for BOOKS -->
+
 
 </div>

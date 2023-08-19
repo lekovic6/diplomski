@@ -1,35 +1,252 @@
-.rowposter{
+/* MAIN PART ABOUT THE BOOK */
+.book-details {
+    display: flex;
+    background-color: #FAFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #173f5f7e;
+    margin: 50px 0;
+}
+
+.book-image {
+    flex: 1;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    /* Stack children vertically */
+    align-items: center;
+    /* Center children horizontally */
+}
+
+.actions {
+    display: flex;
+    width: 100%;
+    /* Take the full width of the parent */
+    margin-top: 10px;
+    /* Some space between image and buttons */
+}
+
+.actions button {
+    flex: 1;
+    /* Allow buttons to grow and take available space */
+    padding: 10px 0;
+    /* Adjust padding to make the button look better */
+    text-align: center;
+    /* Center the text of the button */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.actions button:last-child {
+    margin-right: 0;
+    /* Remove margin-right for the last button */
+}
+
+.book-cover {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.book-info {
+    flex: 2;
+}
+
+.edit-btn,
+.add-btn {
+    background-color: #173F5F;
+    color: #FAFFFF;
+}
+
+.add-btn:hover {
+    background-color: #F39C12;
+    color: #FAFFFF;
+}
+.remove-btn:hover{
+    background-color: #d10e0e;
+}
+
+.delete-btn,
+.remove-btn {
+    background-color: #e91212;
+    color: #FAFFFF;
+}
+
+h1 {
+    font-size: 2em;
+    color: #173F5F;
+    margin-top: 20px;
+    font-weight: 600;
+
+    border-bottom: 3px solid #173F5F;
+
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+p {
+    color: #173F5F;
+    margin-bottom: 15px;
+}
+.authors{
+    color: #173F5F;
+}
+.genre-link,
+.author-link {
+    color: #F39C12;
+    text-decoration: none;
+}
+
+.genre-link:hover,
+.author-link:hover {
+    text-decoration: underline;
+}
+/* END of the MAIN PART ABOUT THE BOOK */
+
+
+
+
+
+/* REVIEWS SECTION */
+.reviews.section.card-layout{
+    background-color: #FAFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+.eachReview.card-layout {
+    background-color: #e9f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.leave-review,
+.edit-review {
+    background-color: #FAFFFF;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.edit-review .btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #173F5F;
+    color: #FAFFFF;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #F39C12;
+}
+
+.leaveReviewButton{
+    margin-left: 20px;
+}
+
+.login-prompt {
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.no-reviews {
+    font-weight: bold;
+    color: #173F5F;
+    margin-top: 10px;
+}
+
+.notLoggedIn{
+    color: #173F5F;
+    font-style: italic;
+}
+
+.commentDiv{
+    font-style: italic;
+}
+
+/* END of the REVIEWS SECTION */
+
+
+
+
+/* FOR THE YOU MIGHT ALSO LIKE PART*/
+
+h3.text-dark {
+    margin-top: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #173F5F;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+
+.rowposter {
     display: flex;
     overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #173F5F #f7f7f7;
+    /* thumb and track */
+    padding-bottom: 10px;
+    border-bottom: 3px solid #173F5F;
+
 }
 
-.rowimg
-{
-    max-height: 100px;
-    object-fit: contain;
-    width: 100%;
-    box-sizing: content-box;
-    transition: transform 450ms;
-    margin-right: 7px;
+.rowposter::-webkit-scrollbar {
+    width: 6px;
 }
 
-.rowimg:hover
-{
+.rowposter::-webkit-scrollbar-track {
+    background: #173f5f1e;
+    border-radius: 20px;
+}
+
+.rowposter::-webkit-scrollbar-thumb {
+    background-color: #173F5F;
+    border-radius: 20px;
+    border: 3px solid #f7f7f7;
+}
+
+
+
+.rowimg {
+    flex: 0 0 auto;
+    height: 100px;
+    object-fit: cover;
+    width: 170px;
+    /* Make width auto to maintain aspect ratio */
+    margin-right: 14px;
+    border-radius: 8px;
+    transition: transform 450ms, box-shadow 450ms;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rowimg:hover {
+
     transform: scale(1.09);
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.largeposter{
-    max-height: 300px;
-}
-
-.rowposter::-webkit-scrollbar
-{
-    display: none;
-}
-
-.searchBarRow{
-    margin-top: 20px ;
-    margin-bottom: 20px ;
+.largeposter {
+    height: 250px;
 }

@@ -1,0 +1,91 @@
+/* AUTHOR DETAILS PART */
+
+
+
+
+/* END of AUTHOR DETAILS PART */
+
+
+
+
+
+
+
+/* WORKS PART */
+
+/* ---------------- BOOKS PART ---------------- */
+.works.card-layout{
+    background-color: #FAFFFF;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0px;
+
+}
+
+.book-card {
+    background-color: #faffff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px #173f5f5d;
+    padding: 20px;
+    transition: transform 300ms, box-shadow 300ms;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px #173f5f5d;
+}
+
+.book-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.book-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #173F5F;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 300ms;
+}
+
+.book-title:hover {
+    color: #F39C12;
+}
+
+.authorsRow {
+    margin-bottom: 15px;
+    color: #777;
+    font-style: italic;
+}
+
+.by-text {
+    font-weight: bold;
+    color: #173F5F;
+}
+
+.authorLink {
+    color: #F39C12;
+    cursor: pointer;
+    transition: color 300ms;
+}
+
+.authorLink:hover {
+    text-decoration: underline;
+    color: #F39C12;
+}
+
+.book-description {
+    color: #555;
+    line-height: 1.5;
+}
+/* ---------------- END BOOKS PART ---------------- */
+
+
+
+/* END of WORKS PART */

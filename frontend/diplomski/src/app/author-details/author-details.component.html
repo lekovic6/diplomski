@@ -1,75 +1,78 @@
 <div class="container">
+    <div class="author-details">
+        <img class="rowimg largeposter" [src]="authorToShow.coverData64" alt="Book Image">
+        <h2>{{authorToShow.name}}</h2>
 
-    <img class="rowimg largeposter" [src]="authorToShow.coverData64" alt="Book Image">
-    <h2>{{authorToShow.name}}</h2>
-    
+        <div *ngIf="currentLoggedUser?.role == 'admin' ">
+            <button [routerLink]="['/editAuthorDetails', authorId]">Edit author</button>
+            <button (click)="deleteAuthor()"> Delete author</button>
+        </div>
 
-    <div *ngIf="currentLoggedUser.role == 'admin' ">
-        <button [routerLink]="['/editAuthorDetails', authorId]">Edit author</button>
-        <button (click) = "deleteAuthor()"> Delete author</button>
+        <h4>Biography: </h4>
+        <p>{{authorToShow.bio}}</p>
+
+        <h4>Birth date: </h4>
+        <p>{{authorToShow.birth_date}}</p>
+
+        <h4>Death date: </h4>
+        <p>{{authorToShow.death_date}}</p>
+
+        <h4>Links:</h4>
+        <div class="links">
+            <ul>
+                <li *ngFor="let link of authorToShow.links">
+                    <a href="{{link.url}}">
+                        {{link.title}}
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
-
-    <h4>Biography: </h4>
-    <p>{{authorToShow.bio}}</p>
-
-    <h4>Birth date: </h4>
-    <p>{{authorToShow.birth_date}}</p>
-
-    <h4>Death date: </h4>
-    <p>{{authorToShow.death_date}}</p>
-    
-    <h4>Links:</h4>
-    <div class="links">
-        <ul>
-            <li *ngFor="let link of authorToShow.links">
-                <a href="{{link.url}}">
-                    {{link.title}}
-                </a>
-            </li>
-        </ul>
-    </div>
-
-
-    <div class="works">
+    <div class="works card-layout">
         <h4>Works</h4>
 
         <div *ngIf="authorsWorks && authorsWorks.length > 0">
-            <div *ngFor="let book of authorsWorks | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center">
-        
-                <div class="col col-sm-2" style="background-color: rgb(0, 255, 76);">
-                    <img class="card-image" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
+            <div *ngFor="let book of authorsWorks | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center book-card">
+
+                <div class="col col-sm-2">
+                    <img class="book-img" [src]="book.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', book._id]">
                 </div>
-        
+
                 <div class="col col-sm">
-                    <div class="row" style="background-color: rgb(255, 0, 191);" [routerLink]="['/bookDetails', book._id]">
+                    <div class="book-title" [routerLink]="['/bookDetails', book._id]">
                         {{book.title}}
                     </div>
-                    
-                    <div class="row" style="background-color: rgb(0, 195, 255);">
-                        by: 
-                        <span *ngFor="let author of book.authors">{{author.name}} </span>
+
+                    <div class="authorsRow">
+                        <span class="by-text">by: &nbsp;</span>
+                        <ng-container *ngFor="let author of book.authors; let i = index">
+                            <span [routerLink]="['/authorDetails', author._id]" class="authorLink">{{ author.name
+                                }}</span>{{ i < book.authors.length - 1 ? ',&nbsp;' : '' }} </ng-container>
                     </div>
-        
-                    <div class="row " style="background-color: rgb(38, 0, 255);">
+
+                    <div class="book-description">
                         <p *ngIf="book.description == null">This book doesn't have a description yet.</p>
                         <p *ngIf="book.description && book.description.length <= 1000">{{book.description}}</p>
-                        <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0, 1000)}}...</p>
+                        <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0,
+                            1000)}}...</p>
                     </div>
                 </div>
-    
+
             </div>
-    
+
             <!-- Pagination Controls -->
             <div class="d-flex justify-content-center">
-                <pagination-controls  (pageChange)="currentPage = $event;"></pagination-controls>
+                <pagination-controls (pageChange)="currentPage = $event;"></pagination-controls>
             </div>
-            
+
         </div>
 
         <div *ngIf="!authorsWorks || authorsWorks.length === 0">
             <h3>There are no works by this author!</h3>
         </div>
+
     </div>
 
 </div>

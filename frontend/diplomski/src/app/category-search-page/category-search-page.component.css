@@ -1,0 +1,141 @@
+/* ---------------- SEARCH BAR ---------------- */
+.searchBarRow {
+    margin-top: 20px;
+    /* Optional - Adds a little space on top */
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #173F5F;
+    border-radius: 5px 0 0 5px;
+    /* Rounded on the left side */
+    outline: none;
+    color: #173F5F;
+    /* Text color */
+    font-weight: bold;
+    background-color: #FAFFFF;
+    transition: border-color 0.3s ease;
+    /* Smooth transition for border color */
+}
+
+#searchInput:focus {
+    border-color: #F39C12;
+    /* When the input is focused, its border color changes to orange */
+}
+
+.searchButton {
+    width: 100%;
+    padding: 10px 20px;
+    border: 2px solid #173F5F;
+    background-color: #173F5F;
+    color: #FAFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    /* Rounded on the right side */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition for background and text color */
+}
+
+.searchButton:hover {
+    background-color: #F39C12;
+    color: #173F5F;
+}
+
+/* Responsive for smaller screens (Optional) */
+@media (max-width: 575.98px) {
+
+    #searchInput,
+    .searchButton {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ---------------- END SEARCH BAR ---------------- */
+
+
+/* ---------------- BOOKS PART ---------------- */
+.book-card {
+    background-color: #faffff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px #173f5f5d;
+    padding: 20px;
+    transition: transform 300ms, box-shadow 300ms;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px #173f5f5d;
+}
+
+.book-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.book-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #173F5F;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 300ms;
+}
+
+.book-title:hover {
+    color: #F39C12;
+}
+
+.authorsRow {
+    margin-bottom: 15px;
+    color: #777;
+    font-style: italic;
+}
+
+.by-text {
+    font-weight: bold;
+    color: #173F5F;
+}
+
+.authorLink {
+    color: #F39C12;
+    cursor: pointer;
+    transition: color 300ms;
+}
+
+.authorLink:hover {
+    text-decoration: underline;
+    color: #F39C12;
+}
+
+.book-description {
+    color: #555;
+    line-height: 1.5;
+}
+/* ---------------- END BOOKS PART ---------------- */
+
+
+h2 {
+    padding-left: 10px;
+    margin-top: 20px;
+    font-weight: 800;
+    border-left: 5px solid #173F5F;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+h4 {
+    padding-left: 10px;
+    margin-top: 20px;
+    font-weight: 800;
+    display: inline-block;
+    padding-bottom: 5px;
+    font-style: italic;
+}

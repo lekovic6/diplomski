@@ -1,27 +1,27 @@
 <div class="container">
 
     <!-- search bar  -->
-    <div class = "row searchBarRow justify-content-sm-center">
-        <div class="col col-sm">
-            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search..." style="width: 100%;">
+    <div class="row searchBarRow justify-content-sm-center">
+        <div class="col col-sm-10">
+            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search...">
         </div>
-        
-        <div class="col col-sm-1" >
-            <button class="button" (click)="search()" style="width: 100%;">Search</button>
+        <div class="col col-sm-2">
+            <button class="searchButton" (click)="search()">Search</button>
         </div>
     </div>
 
     <!-- banner start  -->
     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000" *ngFor="let featBook of featuredBooks;let i=index" [ngClass]="{active:i===1}">
-
-                <img  [src]="featBook.coverData64" class="d-block w-100" alt="...">
+            <div class="carousel-item" data-bs-interval="10000" *ngFor="let featBook of featuredBooks;let i=index"
+                [ngClass]="{active:i===0}">
+                <img [src]="featBook.coverData64" class="d-block w-100" alt="...">
 
                 <div class="carousel-caption d-none d-md-block">
                     <h2 [routerLink]="['/bookDetails', featBook._id]">{{featBook.title}}</h2>
                     <p *ngIf="featBook.description && featBook.description.length <= 500">{{featBook.description}}</p>
-                    <p *ngIf="featBook.description && featBook.description.length > 500">{{featBook.description.substring(0, 500)}}...</p>
+                    <p *ngIf="featBook.description && featBook.description.length > 500">
+                        {{featBook.description.substring(0, 500)}}...</p>
                 </div>
             </div>
         </div>
@@ -36,58 +36,63 @@
     </div>
     <!-- banner end  -->
 
-
     <div class="container mt-3 mb-5 p-4">
 
         <!--  Trending  -->
         <div class="row">
-            <h4 class="text-dark">Trending Books</h4>
-            
+            <h3 class="text-dark">Trending books</h3>
+
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let featBook of featuredBooks">
-                    <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image" [routerLink]="['/bookDetails', featBook._id]">
+                    <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', featBook._id]">
                 </ng-container>
             </div>
         </div>
 
         <!--  Top picks  -->
         <div class="row">
-            <h4 class="text-dark">Top picks</h4>
-            
+            <h3 class="text-dark">Top picks</h3>
+
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of featuredBooks">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
+                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', book._id]">
                 </ng-container>
             </div>
         </div>
 
         <!--  Science fiction  -->
         <div class="row">
-            <h4 class="text-dark">Science fiction</h4>
-            
+            <h3 class="text-dark">Science fiction</h3>
+
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of sciFiBooks">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
+                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', book._id]">
                 </ng-container>
             </div>
         </div>
 
         <!--  Fantasy  -->
         <div class="row">
-            <h4 class="text-dark">Fantasy</h4>
-            
+            <h3 class="text-dark">Fantasy</h3>
+
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of fantasyBooks">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
+                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', book._id]">
                 </ng-container>
             </div>
         </div>
 
-        <h4 class="text-dark">Check out other categories:</h4>
+        <h3 class="text-dark">Check out other categories:</h3>
+        <div class="categories-container">
+            <span *ngFor="let cat of allCategories">
+                <a [routerLink]="['/categorySearchPage', cat.categoryName]">{{cat.showName}}</a>
+            </span>
+        </div>
 
-        <span *ngFor="let cat of allCategories">
-            <a [routerLink]="['/categorySearchPage', cat.categoryName]"> {{cat.showName}} </a> &nbsp;|
-        </span>
 
     </div>
 

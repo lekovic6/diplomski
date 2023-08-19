@@ -1,81 +1,72 @@
 <div class="container">
-    
-    <!-- search bar  -->
-    <div class = "row searchBarRow justify-content-sm-center">
-        <div class="col col-sm">
-            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search..." style="width: 100%;">
+
+
+    <div class="row searchBarRow justify-content-sm-center">
+        <div class="col col-sm-10">
+            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search...">
         </div>
-        
-        <div class="col col-sm-1" >
-            <button class="button" (click)="search()" style="width: 100%;">Search</button>
+        <div class="col col-sm-2">
+            <button class="searchButton" (click)="search()">Search</button>
         </div>
 
         <!-- Radio buttons for search type -->
-        <div class="col col-sm-auto">
-            <input type="radio" [(ngModel)]="searchType" name="searchType" value="book" id="bookRadio" checked (change)="onRadioChange()">
-            <label for="bookRadio">Book</label>
-            
-            <input type="radio" [(ngModel)]="searchType" name="searchType" value="author" id="authorRadio" (change)="onRadioChange()">
-            <label for="authorRadio">Author</label>
-        </div>
+        <div class="col col-sm-auto radio-container">
+            <input type="radio" [(ngModel)]="searchType" name="searchType" value="book" id="bookRadio"
+                class="custom-radio" checked (change)="onRadioChange()">
+            <label for="bookRadio" class="custom-label">Book</label>
 
-    </div>
-
-    <div class = "row searchBarRow justify-content-sm-center">
-        <div class="col col-sm-2">
-
+            <input type="radio" [(ngModel)]="searchType" name="searchType" value="author" id="authorRadio"
+                class="custom-radio" (change)="onRadioChange()">
+            <label for="authorRadio" class="custom-label">Author</label>
         </div>
     </div>
+
 
     <!-- Show search result for BOOKS -->
     <div *ngIf="searchType == 'book'">
 
         <div *ngIf="booksToShow && booksToShow.length > 0">
-            <div *ngFor="let book of booksToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center">
-        
-                <div class="col col-sm-2" style="background-color: rgb(0, 255, 76);">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
+            <div *ngFor="let book of booksToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };"
+                class="row justify-content-sm-center book-card">
+
+                <div class="col col-sm-2">
+                    <img class="book-img" [src]="book.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', book._id]">
                 </div>
-        
+
                 <div class="col col-sm">
-                    <div class="row" style="background-color: rgb(255, 0, 191);" [routerLink]="['/bookDetails', book._id]">
+                    <div class="book-title" [routerLink]="['/bookDetails', book._id]">
                         {{book.title}}
                     </div>
-                    
-
 
                     <div class="authorsRow">
-                        <span>by: &nbsp;</span>
+                        <span class="by-text">by: &nbsp;</span>
                         <ng-container *ngFor="let author of book.authors; let i = index">
-                            <span [routerLink]="['/authorDetails', author._id]" class="authorLink"> {{ author.name }}</span>{{ i < book.authors.length - 1 ? ',&nbsp;' : '' }}
-                        </ng-container>
+                            <span [routerLink]="['/authorDetails', author._id]" class="authorLink">{{ author.name
+                                }}</span>{{ i < book.authors.length - 1 ? ',&nbsp;' : '' }} </ng-container>
                     </div>
-                    
 
-
-        
-                    <div class="row" style="background-color: rgb(38, 0, 255);">
+                    <div class="book-description">
                         <p *ngIf="book.description == null">This book doesn't have a description yet.</p>
                         <p *ngIf="book.description && book.description.length <= 1000">{{book.description}}</p>
-                        <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0, 1000)}}...</p>
+                        <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0,
+                            1000)}}...</p>
                     </div>
                 </div>
-    
             </div>
-    
+
             <!-- Pagination Controls -->
             <div class="d-flex justify-content-center">
-                <pagination-controls  (pageChange)="currentPage = $event; search()"></pagination-controls>
+                <pagination-controls (pageChange)="currentPage = $event; search()"></pagination-controls>
             </div>
-            
         </div>
-        
+
         <!-- Display this when there are no books to show -->
         <div *ngIf="!booksToShow || booksToShow.length === 0">
             <h3>There are no books with this title. Try something else!</h3>
         </div>
-
     </div>
+
     <!-- end of results for BOOKS -->
 
 
@@ -86,41 +77,43 @@
     <div *ngIf="searchType == 'author'">
 
         <div *ngIf="authorsToShow && authorsToShow.length > 0">
-            <div *ngFor="let author of authorsToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center">
-        
-                <div class="col col-sm-2" style="background-color: rgb(0, 255, 76);">
-                    <img class="rowimg largeposter" [src]="author.coverData64" alt="Book Image" [routerLink]="['/bookDetails', author._id]">
+            <div *ngFor="let author of authorsToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };"
+                class="row justify-content-sm-center book-card">
+
+                <div class="col col-sm-2">
+                    <img class="book-img" [src]="author.coverData64" alt="Author Image"
+                        [routerLink]="['/authorDetails', author._id]">
                 </div>
-        
+
                 <div class="col col-sm">
-                    <div class="row" style="background-color: rgb(255, 0, 191);" [routerLink]="['/authorDetails', author._id]">
+                    <div class="book-title" [routerLink]="['/authorDetails', author._id]">
                         {{author.name}}
                     </div>
-                    
-                    <div class="row" style="background-color: rgb(0, 195, 255);">
+
+                    <div class="author-date">
                         {{author.birth_date}} - {{author.death_date}}
                     </div>
-        
-                    <div class="row" style="background-color: rgb(38, 0, 255);">
-                        <p *ngIf="author.bio == null">This author doesn't have a biography writen yet.</p>
+
+                    <div class="book-description">
+                        <p *ngIf="author.bio == null">This author doesn't have a biography written yet.</p>
                         <p *ngIf="author.bio && author.bio.length <= 1000">{{author.bio}}</p>
                         <p *ngIf="author.bio && author.bio.length > 1000">{{author.bio.substring(0, 1000)}}...</p>
                     </div>
                 </div>
-    
+
             </div>
-    
+
             <!-- Pagination Controls -->
             <div class="d-flex justify-content-center">
-                <pagination-controls  (pageChange)="currentPage = $event; search()"></pagination-controls>
+                <pagination-controls (pageChange)="currentPage = $event; search()"></pagination-controls>
             </div>
-            
         </div>
-        
-        <!-- Display this when there are no books to show -->
+
+        <!-- Display this when there are no authors to show -->
         <div *ngIf="!authorsToShow || authorsToShow.length === 0">
             <h3>There are no authors with this name. Try something else!</h3>
         </div>
+
     </div>
     <!-- end of results for AUTHORS -->
 

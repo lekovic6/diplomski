@@ -1,8 +1,11 @@
 <header>
-    <div class="logo"> 
-        <a *ngIf="userRole === '' " [routerLink]="['/']"> IBooksDb </a> <!-- Neulogovani korisnik-->
-        <a *ngIf="userRole === 'user'" [routerLink]="['/']"> IBooksDb </a> <!-- Klijent korisnik-->
-        <a *ngIf="userRole === 'admin'" [routerLink]="['/']"> IBooksDb </a> <!-- Admin korisnik-->
+
+    <div class="logo" [routerLink]="['/']">
+        <div class="logo-inner">
+            <a *ngIf="userRole === '' "> IBooksDb </a> <!-- Neulogovani korisnik-->
+            <a *ngIf="userRole === 'user'"> IBooksDb </a> <!-- Klijent korisnik-->
+            <a *ngIf="userRole === 'admin'"> IBooksDb </a> <!-- Admin korisnik-->
+        </div>
     </div>
 
     <!--- Categories menu  -->

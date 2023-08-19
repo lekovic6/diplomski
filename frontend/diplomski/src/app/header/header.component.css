@@ -3,32 +3,50 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-  background-color: #0165d8;
-  color: #ffffff;
+  background-color: #173F5F;
+  color: #FAFFFF;
 }
   
+
+/* LOGO */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-
-  /* promeniti boju loga*/
-  color: #FF4500;
 }
-  
+
+.logo-inner {
+  background-color: #F39C12; /* The gold color for the rectangular background */
+  padding: 5px 15px;
+  border-radius: 7px; /* Giving it slightly rounded corners */
+}
+
+.logo a {
+  color: #173F5F; /* Deep blue text color for the logo */
+  text-decoration: none; /* Removing any underlines */
+}
+/* ------------- LOGO END ------------- */
+
+
+.username {
+  margin-right: 30px;
+  font-weight: bold;
+  color: #FAFFFF; /* Make the username color consistent */
+}
+
+
+
 .user-menu {
   display: flex;
   align-items: center;
 }
 
-.username {
-  margin-right: 20px;
-  font-weight: bold;
-}
+
 
 .logout-btn {
-  background: #FF6347;
-  color: #fff;
-  border: none;
+  background: #173F5F;
+  font-weight: bold;
+  color: #FAFFFF;
+  border: 2px solid #FAFFFF; /* Adding a border for better visual effect */
   padding: 10px 20px;
   margin-right: 20px;
   cursor: pointer;
@@ -37,25 +55,31 @@ header {
 }
 
 .logout-btn:hover {
-  background: #FF4500;
+  background: #FAFFFF; /* Gold color on hover for consistency */
+  color: #173F5F; /* Deep blue text on hover */
 }
+
+/* ---------------------------- */
 
 .dropdown {
   position: relative;
 }
 
 .dropbtn {
-  background: #FF6347;
-  color: #fff;
-  border: none;
+  background: #173F5F;
+  font-weight: bold;
+  color: #FAFFFF;
+  border: 2px solid #FAFFFF;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, border-radius 0.3s ease;
   border-radius: 5px;
 }
 
-.dropbtn:hover {
-  background: #FF4500;
+.dropdown:hover .dropbtn {
+  background: #FAFFFF;
+  color: #173F5F;
+  border-radius: 5px 5px 0 0;
 }
 
 .dropdown-content {
@@ -63,34 +87,46 @@ header {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #424242;
+  background-color: #173F5F; 
   min-width: 200px;
   padding: 20px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 2px solid #FAFFFF;
+  border-top: none; 
+  box-shadow: 4px 5px 0px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 10px 0 5px 10px; 
 }
 
 .dropdown-content a {
   display: block;
   padding: 5px 0;
   text-decoration: none;
-  color: #ffffff;
+  color: #173F5F;
 }
 
 .dropdown-content a:hover {
-  color: #FF6347;
+  color: #F39C12;
+  font-weight: bold;
+
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+  background-color: #FAFFFF;
 }
 
+/* ---------------------------- */
+
 .user-menu-link {
-  color: #ffffff;
+  color: #FAFFFF; /* Making the color consistent */
   text-decoration: none;
   margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px; /* Slight border radius for visual appeal */
+  transition: background-color 0.3s ease;
 }
 
 .user-menu-link:hover {
-  text-decoration: underline;
+  background-color: #D35400; /* Adding a hover background for interactivity */
+  color: #173F5F;
 }

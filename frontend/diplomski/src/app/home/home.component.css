@@ -1,58 +1,214 @@
-.carousel-inner
-{
+/* ---------------- SEARCH BAR ---------------- */
+.searchBarRow {
+    margin-top: 20px;
+    /* Optional - Adds a little space on top */
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #173F5F;
+    border-radius: 5px 0 0 5px;
+    /* Rounded on the left side */
+    outline: none;
+    color: #173F5F;
+    /* Text color */
+    font-weight: bold;
+    background-color: #FAFFFF;
+    transition: border-color 0.3s ease;
+    /* Smooth transition for border color */
+}
+
+#searchInput:focus {
+    border-color: #F39C12;
+    /* When the input is focused, its border color changes to orange */
+}
+
+.searchButton {
+    width: 100%;
+    padding: 10px 20px;
+    border: 2px solid #173F5F;
+    background-color: #173F5F;
+    color: #FAFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    /* Rounded on the right side */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition for background and text color */
+}
+
+.searchButton:hover {
+    background-color: #F39C12;
+    color: #173F5F;
+}
+
+/* Responsive for smaller screens (Optional) */
+@media (max-width: 575.98px) {
+
+    #searchInput,
+    .searchButton {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ---------------- END SEARCH BAR ---------------- */
+
+
+/* ---------------- CAROUSEL PART ---------------- */
+.carousel {
+    margin-top: 20px;
+    /* Optional, to provide some spacing from the previous element */
+}
+
+.carousel-inner {
     height: 700px;
 }
 
-.carousel-inner .carousel-item img
-{
+.carousel-inner .carousel-item img {
     height: 700px;
     object-fit: cover;
+    filter: brightness(70%);
+    /* This dims the images slightly so the text can be more readable */
 }
 
-.carousel-caption h2
-{
-    color: #E50914;
+.carousel-caption {
+    background: rgba(23, 63, 95, 0.7);
+    /* Background color added for better readability */
+    padding: 20px;
+    /* Some padding to give space around the text */
+    border-radius: 5px;
+    /* A slight rounded edge to the caption background */
+    bottom: 20%;
+    /* Position the caption a little above from the bottom */
+}
+
+.carousel-caption h2 {
+    color: #F39C12;
+    /* Using your orange color for the title */
     font-weight: bold;
     font-size: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Shadow for better readability */
 }
 
-.carousel-caption p 
-{
-    color: #ffffff;
+.carousel-caption p {
+    color: #FAFFFF;
+    /* Your light color for regular text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Shadow for better readability */
 }
 
-.rowposter{
+/* Carousel Control Styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #173F5F;
+    /* Use the deep blue color for the arrow background */
+    border-radius: 50%;
+    /* Makes the arrow background circular */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #F39C12;
+    /* Change color on hover */
+}
+
+/* ---------------- END CAROUSEL PART ---------------- */
+
+
+
+/* ---------------- POSTERS ROW PART ---------------- */
+
+
+h4.text-dark {
+    margin-top: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #173F5F;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+h3.text-dark {
+    margin-top: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #173F5F;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.rowposter {
     display: flex;
     overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #173F5F #f7f7f7;
+    /* thumb and track */
+    padding-bottom: 10px;
+    border-bottom: 3px solid #173F5F;
+
 }
 
-.rowimg
-{
-    max-height: 100px;
-    object-fit: contain;
-    width: 100%;
-    box-sizing: content-box;
-    transition: transform 450ms;
-    margin-right: 7px;
+.rowposter::-webkit-scrollbar {
+    width: 6px;
 }
 
-.rowimg:hover
-{
+.rowposter::-webkit-scrollbar-track {
+    background: #173f5f1e;
+    border-radius: 20px;
+}
+
+.rowposter::-webkit-scrollbar-thumb {
+    background-color: #173F5F;
+    border-radius: 20px;
+    border: 3px solid #f7f7f7;
+}
+
+
+
+.rowimg {
+    flex: 0 0 auto;
+    height: 100px;
+    object-fit: cover;
+    width: 170px;     /* Make width auto to maintain aspect ratio */
+    margin-right: 14px;
+    border-radius: 8px;
+    transition: transform 450ms, box-shadow 450ms;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rowimg:hover {
+    
     transform: scale(1.09);
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.largeposter{
-    max-height: 300px;
+.largeposter {
+    height: 250px;
 }
 
-.rowposter::-webkit-scrollbar
-{
-    display: none;
+/* ---------------------- Category links styling ----------------------  */
+.categories-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: no-wrap;
 }
 
-.searchBarRow{
-    margin-top: 20px ;
-    margin-bottom: 20px ;
+span a {
+    color: #333;
+    font-weight: 600;
+    margin-right: 5px;
+    transition: color 0.3s;
+    text-decoration: none;
 }
+
+span a:hover {
+    color: #F39C12;
+    text-decoration: solid;
+}
+
+/* ---------------- END Category PART ---------------- */

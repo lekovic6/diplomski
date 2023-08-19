@@ -100,14 +100,14 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background: #0275d8;
+    background: #173F5F;
     color: white;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
 .edit-button:hover {
-    background: #025aa5;
+    background: #173F5F;
 }
 
 .profile-container label {

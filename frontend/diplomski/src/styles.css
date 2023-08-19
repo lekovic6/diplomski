@@ -7,3 +7,11 @@ app-footer {
     bottom: 0;
     width: 100vw;
 }
+
+body{
+    background-color: #FAFFFF;
+    /*font-family: 'Roboto', sans-serif;  /*Replace 'Roboto' with your chosen font if different */
+    /*font-family: 'Bebas Neue', sans-serif;*/
+    
+    font-family: 'Lato', sans-serif;
+}

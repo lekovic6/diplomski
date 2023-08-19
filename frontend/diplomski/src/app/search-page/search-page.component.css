@@ -1,26 +1,191 @@
-.rowposter {
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
+/* ---------------- SEARCH BAR ---------------- */
+.searchBarRow {
+    margin-top: 20px;
+    /* Optional - Adds a little space on top */
+    margin-bottom: 20px;
 }
 
-.rowimg {
-    max-height: 100px;
-    object-fit: contain;
+#searchInput {
     width: 100%;
-    box-sizing: content-box;
-    margin-right: 7px;
+    padding: 10px;
+    border: 2px solid #173F5F;
+    border-radius: 5px 0 0 5px;
+    /* Rounded on the left side */
+    outline: none;
+    color: #173F5F;
+    /* Text color */
+    font-weight: bold;
+    background-color: #FAFFFF;
+    transition: border-color 0.3s ease;
+    /* Smooth transition for border color */
 }
 
-
-.largeposter {
-    max-height: 300px;
+#searchInput:focus {
+    border-color: #F39C12;
+    /* When the input is focused, its border color changes to orange */
 }
 
+.searchButton {
+    width: 100%;
+    padding: 10px 20px;
+    border: 2px solid #173F5F;
+    background-color: #173F5F;
+    color: #FAFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    /* Rounded on the right side */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition for background and text color */
+}
 
-.authorsRow{
-    background-color: rgb(0, 195, 255);
-    padding: 10px;  /* Adjust as needed */
+.searchButton:hover {
+    background-color: #F39C12;
+    color: #173F5F;
+}
+
+/* Responsive for smaller screens (Optional) */
+@media (max-width: 575.98px) {
+
+    #searchInput,
+    .searchButton {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ---------------- END SEARCH BAR ---------------- */
+
+
+
+
+/* ---------------- RADIO BUTTONs BAR ---------------- */
+.radio-container {
     display: flex;
     align-items: center;
+    gap: 10px;
+    margin: 5px;
+    margin-top: 10px;
+    /* Space between items */
 }
+
+.custom-radio {
+    appearance: none;
+    background-color: #FAFFFF;
+    border: 1px solid #173F5F;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.custom-radio:checked {
+    border-color: #173F5F;
+    /* Change this to your theme color if needed */
+}
+
+.custom-radio:checked::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #173F5F;
+    /* Change this to your theme color if needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-label {
+    cursor: pointer;
+    margin-right: 10px;
+    /* Space between label and the next radio button */
+}
+
+/* ---------------- END RADIO BUTTONs ---------------- */
+
+
+
+/* ---------------- BOOKS PART ---------------- */
+.book-card {
+    background-color: #faffff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px #173f5f5d;
+    padding: 20px;
+    transition: transform 300ms, box-shadow 300ms;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px #173f5f5d;
+}
+
+.book-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.book-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #173F5F;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 300ms;
+}
+
+.book-title:hover {
+    color: #F39C12;
+}
+
+.authorsRow {
+    margin-bottom: 15px;
+    color: #777;
+    font-style: italic;
+}
+
+.by-text {
+    font-weight: bold;
+    color: #173F5F;
+}
+
+.authorLink {
+    color: #F39C12;
+    cursor: pointer;
+    transition: color 300ms;
+}
+
+.authorLink:hover {
+    text-decoration: underline;
+    color: #F39C12;
+}
+
+.book-description {
+    color: #555;
+    line-height: 1.5;
+}
+/* ---------------- END BOOKS PART ---------------- */
+
+
+
+
+/* ---------------- AUTHORS PART ---------------- */
+
+.author-date {
+    margin-bottom: 15px;
+    color: #777;
+    font-weight: bold;
+    color: #173F5F;
+}
+
+/* ---------------- ENDAUTHORS PART ---------------- */

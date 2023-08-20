@@ -1,13 +1,23 @@
-<div *ngFor="let book of booksWithPendingReviews">
-    <h2>{{ book.title }}</h2>
-    <div *ngFor="let review of book.reviews">
-        <p><strong>Reviewed by:</strong> {{ review.username }}</p>
-        <p><strong>Comment:</strong> {{ review.comment }}</p>
-        <button (click)="acceptReview(book._id, review.username)">Accept</button>
-        <button (click)="declineReview(book._id, review.username)">Decline</button>
+<div class="container">
+
+    <!-- Loop through books with pending reviews -->
+    <div *ngFor="let book of booksWithPendingReviews" class="book-card">
+        <h2>{{ book.title }}</h2>
+
+        <!-- Loop through the reviews for each book -->
+        <div *ngFor="let review of book.reviews" class="review-card">
+            <p class="review-user"><strong>Reviewed by:</strong> {{ review.username }}</p>
+            <p class="review-comment"><strong>Comment:</strong> {{ review.comment }}</p>
+            <div class="review-actions">
+                <button (click)="acceptReview(book._id, review.username)" class="accept-btn">Accept</button>
+                <button (click)="declineReview(book._id, review.username)" class="decline-btn">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message for when there are no pending reviews -->
+    <div *ngIf="booksWithPendingReviews.length == 0" class="no-reviews">
+        <h2>There are currently no pending reviews!</h2>
     </div>
 </div>
 
-<div *ngIf="booksWithPendingReviews.length == 0">
-    <h2>There are currently no pending reviews!</h2>
-</div>

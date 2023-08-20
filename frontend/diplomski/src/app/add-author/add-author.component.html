@@ -1,52 +1,56 @@
-<div class="container">
+<div class="container ">
 
-    <img class="rowimg largeposter" [src]="authorToAdd.coverData64" alt="Book Image">
-    <br>
-    Choose book cover picture:<input type="file" id="coverPicutre" accept=".jpg, .png" (change)="onFileChange($event)">
-    <div *ngIf="dimensionErrorFlag" class="error-message">
-        {{dimensionErrorMassage}}
+    <div class="add-author-container">
+        <!-- Image and Upload Section -->
+        <div class="image-section">
+            <div>
+                <img class="author-image" [src]="authorToAdd.coverData64" alt="Author image">
+            </div>
+
+
+            <div class="custom-file-upload">
+                <label for="coverPicutre">
+                    <span>Upload author picture</span>
+                </label>
+                <input type="file" id="coverPicutre" accept=".jpg, .png" (change)="onFileChange($event)">
+            </div>
+            <div *ngIf="dimensionErrorFlag" class="error-message">
+                {{dimensionErrorMassage}}
+            </div>
+        </div>
+
+        <!-- Author Details -->
+        <div class="details-section">
+            <label for="name">Name:</label>
+            <input type="text" name="name" [(ngModel)]="authorToAdd.name">
+
+            <label for="bio">Biography:</label>
+            <textarea name="bio" [(ngModel)]="authorToAdd.bio"></textarea>
+
+            <label for="birth_date">Birth date:</label>
+            <input type="text" name="birth_date" [(ngModel)]="authorToAdd.birth_date">
+
+            <label for="death_date">Death date:</label>
+            <input type="text" name="death_date" [(ngModel)]="authorToAdd.death_date">
+
+            <div class="links-section">
+                <label>Links:</label>
+                <ul>
+                    <li *ngFor="let link of authorToAdd.links; let i = index">
+                        <div class="link-item">
+                            <label for="title">Title:</label>
+                            <input type="text" name="title" [(ngModel)]="link.title">
+                            <label for="url">URL:</label>
+                            <input type="text" name="url" [(ngModel)]="link.url">
+                            <button class="remove-button" (click)="removeLink(i)">Remove</button>
+                        </div>
+                    </li>
+                </ul>
+                <button class="round-btn" (click)="addLink()">➕</button>
+            </div>
+
+            <button class="save-btn" (click)="insertAuthor()">Add author</button>
+        </div>
     </div>
-    <br>
-
-    <strong>Name: </strong>
-    <input type="text" name="name" [(ngModel)]="authorToAdd.name">
-
-
-
-
-    <strong>Biography: </strong>
-    <input type="text" name="bio" [(ngModel)]="authorToAdd.bio">
-
-    <br>
-
-    <strong>Birth date: </strong>
-    <input type="text" name="birth_date" [(ngModel)]="authorToAdd.birth_date">
-
-    <br>
-
-    <strong>Death date: </strong>
-    <input type="text" name="death_date" [(ngModel)]="authorToAdd.death_date">
-
-    <h4>Links:</h4>
-    <div class="links">
-        <ul>
-            <li *ngFor="let link of authorToAdd.links; let i = index">
-                <strong>Title: </strong>
-                <input type="text" name="title" [(ngModel)]="link.title">
-                <strong>URL: </strong>
-                <input type="text" name="url" [(ngModel)]="link.url">
-
-                <!-- Add 'X' button for removing link -->
-                <button (click)="removeLink(i)">X</button>
-            </li>
-        </ul>
-
-        <!-- Button to add a new link -->
-        <button (click)="addLink()">Add a Link</button>
-    </div>
-
-    <button (click)="insertAuthor()">Add author</button>
-
-
 
 </div>

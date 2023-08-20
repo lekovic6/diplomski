@@ -2,7 +2,7 @@
     <div class="book-details">
         <!-- Left side: Book Image -->
         <div class="book-image">
-            <img class="book-cover" [src]="bookToShow.coverData64" alt="Book Image">
+            <img class="book-cover" [src]="bookToShow?.coverData64" alt="Book Image">
 
             <!-- Admin Actions -->
             <div *ngIf="currentLoggedUser?.role == 'admin'" class="actions">
@@ -22,22 +22,22 @@
         <!-- Right side: Book Details -->
         <div class="book-info">
 
-            <h1>{{bookToShow.title}}</h1>
+            <h1>{{bookToShow?.title}}</h1>
             <p class="description">
                 <strong>Description:</strong>
-                <span *ngIf="bookToShow.description != null"> {{bookToShow.description}} </span>
-                <span *ngIf="bookToShow.description == null"> This book does not have a description yet! </span>
+                <span *ngIf="bookToShow?.description != null"> {{bookToShow?.description}} </span>
+                <span *ngIf="bookToShow?.description == null"> This book does not have a description yet! </span>
             </p>
 
             <p class="genre">
                 <strong>Genre: </strong>
-                <a class="genre-link" [routerLink]="['/categorySearchPage', bookToShow.genre]">{{categoryShowName}}</a>
+                <a class="genre-link" [routerLink]="['/categorySearchPage', bookToShow?.genre]">{{categoryShowName}}</a>
             </p>
 
             <div class="authors">
                 <strong>Authors:</strong>
                 <ul>
-                    <li *ngFor="let author of bookToShow.authors">
+                    <li *ngFor="let author of bookToShow?.authors">
                         <a class="author-link" [routerLink]="['/authorDetails', author._id]">
                             {{author.name}}
                         </a>
@@ -46,13 +46,13 @@
             </div>
 
             <p class="publish-year">
-                <strong>First publish year:</strong> {{bookToShow.first_publish_year}}
+                <strong>First publish year:</strong> {{bookToShow?.first_publish_year}}
             </p>
 
             <p class="isbn">
                 <strong>ISBN:</strong>
-                <span *ngIf="bookToShow.isbn != null"> {{bookToShow.isbn}} </span>
-                <span *ngIf="bookToShow.isbn == null"> not available! </span>
+                <span *ngIf="bookToShow?.isbn != null"> {{bookToShow?.isbn}} </span>
+                <span *ngIf="bookToShow?.isbn == null"> not available! </span>
             </p>
 
         </div>
@@ -95,7 +95,7 @@
         </div>
 
         <h3 class="text-dark" *ngIf="isUserLoggedIn == true" >Other reviews:</h3>
-        <ng-container *ngFor="let review of bookToShow.reviews">
+        <ng-container *ngFor="let review of bookToShow?.reviews">
             <div *ngIf="review.accepted == true" class="eachReview card-layout">
                 <div>
                     ⭐ <strong>{{review.rating}}</strong>/10
@@ -127,8 +127,7 @@
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of similarBooks">
                     <ng-container *ngIf="book && book.coverData64">
-                        <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
-                            [routerLink]="['/bookDetails', book._id]">
+                        <img class="rowimg largeposter" [src]="book?.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
                     </ng-container>
                 </ng-container>
 

@@ -1,26 +1,103 @@
-/* AUTHOR DETAILS PART */
+/* ---------------- AUTHOR DETAILS PART ---------------- */
+
+.author-details-container {
+    display: flex;
+    background-color: #FAFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px #173f5f75;
+    margin: 20px 0;
+}
+
+.author-image-section {
+    flex: 1;
+    padding-right: 20px;
+    text-align: center; /* Centering elements vertically */
+}
+
+.author-image {
+    max-width: 80%;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Add space below the image */
+}
+
+.author-info-section {
+    flex: 2;
+    padding-left: 20px; /* To separate the sections */
+}
+
+.admin-actions {
+    margin-top: 20px;
+}
+
+.admin-actions button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: #F39C12;
+    color: #FAFFFF;
+}
+
+.admin-actions button:last-child {
+    background-color: #173F5F;
+}
+
+h2, h4 {
+    color: #173F5F;
+}
+
+.author-name-section{
+    margin-top: 20px;
+    font-weight: 700;
+    border-bottom: 3px solid #173F5F;
+    display: inline-block;
+    padding-bottom: 5px;
+    color: #173F5F;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.links-section a {
+    color: #F39C12;
+    text-decoration: none;
+}
+
+.links-section a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ---------------- END of AUTHOR DETAILS PART ---------------- */
 
 
 
 
-/* END of AUTHOR DETAILS PART */
 
 
+/* ---------------- WORKS PART ---------------- */
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #173F5F;
+    color: #173F5F;
+}
 
-
-
-
-
-/* WORKS PART */
-
-/* ---------------- BOOKS PART ---------------- */
 .works.card-layout{
     background-color: #FAFFFF;
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0px;
-
+    box-shadow: 0 4px 8px #173f5f75;
+    margin-bottom: 50px;
 }
 
 .book-card {
@@ -39,7 +116,7 @@
 
 .book-img {
     width: 100%;
-    max-height: 250px;
+    max-height: 150px;
     object-fit: contain;
     border-radius: 8px;
     margin-right: 20px;
@@ -84,8 +161,4 @@
     color: #555;
     line-height: 1.5;
 }
-/* ---------------- END BOOKS PART ---------------- */
-
-
-
-/* END of WORKS PART */
+/* ---------------- END WORKS PART ---------------- */

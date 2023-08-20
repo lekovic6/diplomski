@@ -25,6 +25,7 @@ export class MyListComponent {
 
     this.userService.getUserByUsername(this.loginService.getUser().username).subscribe((user:User)=>{
       this.currentLoggedUser = user;
+      
       this.currentLoggedUser.favouritesList.forEach((bookId:String) => {
         this.bookService.getBookById(bookId).subscribe((book:Book)=>{
           this.bookList.push(book);

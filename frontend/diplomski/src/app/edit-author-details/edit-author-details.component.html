@@ -1,89 +1,55 @@
-<div class="container">
+<div class="container ">
 
-    <img class="rowimg largeposter" [src]="authorToShow.coverData64" alt="Book Image">
-    <br>
-    Choose new picure:<input type="file" id="coverPicutre" accept=".jpg, .png" (change)="onFileChange($event)">
-    <div *ngIf ="dimensionErrorFlag" class="error-message">
-        {{dimensionErrorMassage}}
-    </div>
-    <br>
-
-    <strong>Name:</strong>
-    <input type="text" name="title" [(ngModel)]="authorToShow.name">
-    
-    <br>
-
-    <strong>Biography: </strong>
-    <input type="text" name="bio" [(ngModel)]="authorToShow.bio">
-
-    <br>
-
-    <strong>Birth date: </strong>
-    <input type="text" name="birth_date" [(ngModel)]="authorToShow.birth_date">
-
-    <br>
-
-    <strong>Death date: </strong>
-    <input type="text" name="birth_date" [(ngModel)]="authorToShow.death_date">
-
-    <h4>Links:</h4>
-    <div class="links">
-        <ul>
-            <li *ngFor="let link of authorToShow.links; let i = index">
-                <strong>Title: </strong> 
-                <input type="text" name="link.title" [(ngModel)]="link.title"> 
-                <strong>URL: </strong>
-                <input type="text" name="link.url" [(ngModel)]="link.url">
-                
-                <!-- Add 'X' button for removing link -->
-                <button (click)="removeLink(i)">X</button>
-            </li>
-        </ul>
-
-        <!-- Button to add a new link -->
-        <button (click)="addLink()">Add a Link</button>
-    </div>
-
-    <button (click)="saveChanges()">Save changes</button>
-
-    <div class="works">
-        <h4>Works</h4>
-
-        <div *ngIf="authorsWorks && authorsWorks.length > 0">
-            <div *ngFor="let book of authorsWorks | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center">
-        
-                <div class="col col-sm-2" style="background-color: rgb(0, 255, 76);">
-                    <img class="card-image" [src]="book.coverData64" alt="Book Image" [routerLink]="['/bookDetails', book._id]">
-                </div>
-        
-                <div class="col col-sm">
-                    <div class="row" style="background-color: rgb(255, 0, 191);" [routerLink]="['/bookDetails', book._id]">
-                        {{book.title}}
-                    </div>
-                    
-                    <div class="row" style="background-color: rgb(0, 195, 255);">
-                        by: 
-                        <span *ngFor="let author of book.authors">{{author.name}} </span>
-                    </div>
-        
-                    <div class="row " style="background-color: rgb(38, 0, 255);">
-                        <p *ngIf="book.description == null">This book doesn't have a description yet.</p>
-                        <p *ngIf="book.description && book.description.length <= 1000">{{book.description}}</p>
-                        <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0, 1000)}}...</p>
-                    </div>
-                </div>
-    
+    <div class="add-author-container">
+        <!-- Image and Upload Section -->
+        <div class="image-section">
+            <div>
+                <img class="author-image" [src]="authorToShow.coverData64" alt="Author image">
             </div>
-    
-            <!-- Pagination Controls -->
-            <div class="d-flex justify-content-center">
-                <pagination-controls  (pageChange)="currentPage = $event;"></pagination-controls>
+
+
+            <div class="custom-file-upload">
+                <label for="coverPicutre">
+                    <span>Upload author picture</span>
+                </label>
+                <input type="file" id="coverPicutre" accept=".jpg, .png" (change)="onFileChange($event)">
             </div>
-            
+            <div *ngIf="dimensionErrorFlag" class="error-message">
+                {{dimensionErrorMassage}}
+            </div>
         </div>
 
-        <div *ngIf="!authorsWorks || authorsWorks.length === 0">
-            <h3>There are no works by this author!</h3>
+        <!-- Author Details -->
+        <div class="details-section">
+            <label for="name">Name:</label>
+            <input type="text" name="name" [(ngModel)]="authorToShow.name">
+
+            <label for="bio">Biography:</label>
+            <textarea name="bio" [(ngModel)]="authorToShow.bio"></textarea>
+
+            <label for="birth_date">Birth date:</label>
+            <input type="text" name="birth_date" [(ngModel)]="authorToShow.birth_date">
+
+            <label for="death_date">Death date:</label>
+            <input type="text" name="death_date" [(ngModel)]="authorToShow.death_date">
+
+            <div class="links-section">
+                <label>Links:</label>
+                <ul>
+                    <li *ngFor="let link of authorToShow.links; let i = index">
+                        <div class="link-item">
+                            <label for="title">Title:</label>
+                            <input type="text" name="title" [(ngModel)]="link.title">
+                            <label for="url">URL:</label>
+                            <input type="text" name="url" [(ngModel)]="link.url">
+                            <button class="remove-button" (click)="removeLink(i)">Remove</button>
+                        </div>
+                    </li>
+                </ul>
+                <button class="round-btn" (click)="addLink()">➕</button>
+            </div>
+
+            <button class="save-btn" (click)="saveChanges()">Save changes</button>
         </div>
     </div>
 

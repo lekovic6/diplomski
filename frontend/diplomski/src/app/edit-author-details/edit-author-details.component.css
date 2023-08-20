@@ -1,0 +1,174 @@
+/* ... [Your existing CSS remains unchanged] ... */
+
+.add-author-container {
+    margin: 40px;
+    background-color: #FAFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.author-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.links-section {
+    margin-top: 20px;
+}
+
+.link-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FAFFFF;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.link-item input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.remove-button::before {
+    content: 'x';
+    margin-right: 5px;
+}
+
+
+.image-section {
+    flex: 1;
+    text-align: center;
+    padding-right: 20px;
+}
+
+
+.details-section {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.details-section label {
+    font-weight: bold;
+    color: #173F5F;
+    display: block;
+    margin-top: 20px;
+}
+
+.details-section input[type="text"], 
+.details-section textarea,
+.details-section select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.author-search-section {
+    margin-top: 20px;
+    background-color: #FAFFFF;
+    border: solid 3px #173F5F;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+
+.save-btn {
+    display: inline-block;
+    background-color: #173F5F;
+    color: #FAFFFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #F39C12;
+}
+
+.round-btn {
+    background-color: #173F5F;
+    color: #FAFFFF;
+    border: none;
+    width: 50px;     /* Determines the size of the circle */
+    height: 50px;    /* Determines the size of the circle */
+    border-radius: 50%;  /* Makes the button round */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;  /* Adjusts the size of the emoji */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.round-btn:hover {
+    background-color: #F39C12;
+}
+
+.authorRow button:hover {
+    background-color: #F39C12;
+}
+
+.custom-file-upload {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-file-upload label {
+    background-color: #173F5F;
+    color: #FAFFFF;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload label:hover {
+    background-color: #F39C12;
+}
+
+.custom-file-upload label span {
+    pointer-events: none;  /* So the label remains clickable */
+}
+
+#coverPicutre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;  /* Hide the input */
+    cursor: pointer;
+}
+
+.error-message{
+    color: red;
+    font-style: italic;
+}
+
+
+.remove-button {
+    margin: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-button::before {
+    content: 'x';
+    margin-right: 5px;
+}

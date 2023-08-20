@@ -10,13 +10,14 @@ header {
 
 /* LOGO */
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-left: 25px;
 }
 
 .logo-inner {
   background-color: #F39C12; /* The gold color for the rectangular background */
-  padding: 5px 15px;
+  padding: 4px 10px;
   border-radius: 7px; /* Giving it slightly rounded corners */
 }
 
@@ -26,14 +27,11 @@ header {
 }
 /* ------------- LOGO END ------------- */
 
-
 .username {
   margin-right: 30px;
   font-weight: bold;
   color: #FAFFFF; /* Make the username color consistent */
 }
-
-
 
 .user-menu {
   display: flex;
@@ -117,16 +115,3 @@ header {
 
 /* ---------------------------- */
 
-.user-menu-link {
-  color: #FAFFFF; /* Making the color consistent */
-  text-decoration: none;
-  margin-right: 10px;
-  padding: 5px 10px;
-  border-radius: 5px; /* Slight border radius for visual appeal */
-  transition: background-color 0.3s ease;
-}
-
-.user-menu-link:hover {
-  background-color: #D35400; /* Adding a hover background for interactivity */
-  color: #173F5F;
-}

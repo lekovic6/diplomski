@@ -44,7 +44,8 @@
 
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let featBook of featuredBooks">
-                    <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image" [routerLink]="['/bookDetails', featBook._id]">
+                    <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image"
+                        [routerLink]="['/bookDetails', featBook._id]">
                 </ng-container>
             </div>
         </div>
@@ -85,12 +86,16 @@
             </div>
         </div>
 
-        <h3 class="text-dark">Check out other categories:</h3>
-        <div class="categories-container">
-            <span *ngFor="let cat of allCategories">
-                <a [routerLink]="['/categorySearchPage', cat.categoryName]">{{cat.showName}}</a>
-            </span>
+        <div class="row">
+            <h3 class="text-dark">Check out other categories:</h3>
+            <div class="categories-container">
+                <span *ngFor="let cat of allCategories">
+                    <a [routerLink]="['/categorySearchPage', cat.categoryName]">{{cat.showName}}</a>
+                </span>
+            </div>
         </div>
+
+
 
 
     </div>

@@ -1,36 +1,58 @@
 <div class="container">
-    <div class="author-details">
-        <img class="rowimg largeposter" [src]="authorToShow.coverData64" alt="Book Image">
-        <h2>{{authorToShow.name}}</h2>
 
-        <div *ngIf="currentLoggedUser?.role == 'admin' ">
-            <button [routerLink]="['/editAuthorDetails', authorId]">Edit author</button>
-            <button (click)="deleteAuthor()"> Delete author</button>
+    <div class="author-details-container card-layout">
+        <!-- Left Side: Image and Key Details -->
+        <div class="author-image-section">
+            <img class="author-image" [src]="authorToShow.coverData64" alt="Author Image">
+    
+            <div class="admin-actions" *ngIf="currentLoggedUser?.role == 'admin'">
+                <button [routerLink]="['/editAuthorDetails', authorId]">Edit author</button>
+                <button (click)="deleteAuthor()">Delete author</button>
+            </div>
         </div>
+    
+        <!-- Right Side: Author Info -->
+        <div class="author-info-section">
+            <div >
+                <h2 class="author-name-section">{{authorToShow.name}}</h2>
+            </div>
 
-        <h4>Biography: </h4>
-        <p>{{authorToShow.bio}}</p>
+            <div class="bio-section">
+                <h4>Biography:</h4>
+                <p>{{authorToShow.bio}}</p>
+                <p *ngIf="authorToShow.bio == null">
+                    No biography writen for this author!
+                </p>
+            </div>
+    
+            <div class="dates-section">
+                <h4>Birth date:</h4>
+                <p>{{authorToShow.birth_date}}</p>
+    
+                <h4>Death date:</h4>
+                <p>{{authorToShow.death_date}}</p>
+            </div>
+    
+            <div class="links-section">
+                <h4>Links:</h4> 
+                <p *ngIf="authorToShow.links == null">
+                    No links found
+                </p>
 
-        <h4>Birth date: </h4>
-        <p>{{authorToShow.birth_date}}</p>
-
-        <h4>Death date: </h4>
-        <p>{{authorToShow.death_date}}</p>
-
-        <h4>Links:</h4>
-        <div class="links">
-            <ul>
-                <li *ngFor="let link of authorToShow.links">
-                    <a href="{{link.url}}">
-                        {{link.title}}
-                    </a>
-                </li>
-            </ul>
+                <ul>
+                    <li *ngFor="let link of authorToShow.links">
+                        <a href="{{link.url}}">{{link.title}}</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+    
+
+
 
     <div class="works card-layout">
-        <h4>Works</h4>
+        <h3>Works</h3>
 
         <div *ngIf="authorsWorks && authorsWorks.length > 0">
             <div *ngFor="let book of authorsWorks | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center book-card">
@@ -54,9 +76,9 @@
 
                     <div class="book-description">
                         <p *ngIf="book.description == null">This book doesn't have a description yet.</p>
-                        <p *ngIf="book.description && book.description.length <= 1000">{{book.description}}</p>
-                        <p *ngIf="book.description && book.description.length > 1000">{{book.description.substring(0,
-                            1000)}}...</p>
+                        <p *ngIf="book.description && book.description.length <= 350">{{book.description}}</p>
+                        <p *ngIf="book.description && book.description.length > 350">{{book.description.substring(0,
+                            350)}}...</p>
                     </div>
                 </div>
 

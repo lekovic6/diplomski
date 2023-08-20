@@ -42,7 +42,7 @@
     </nav>  
 
     <nav class="user-menu" *ngIf="!(isLoggedIn | async)">
-        <a routerLink="loginUser" class="user-menu-link">Login!</a>
-        <a routerLink="registration" class="user-menu-link">Register!</a>
+        <button [routerLink]="['/loginUser']" class="logout-btn">Login</button>
+        <button [routerLink]="['/registration']" class="logout-btn">Register</button>
     </nav>
 </header>

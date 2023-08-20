@@ -4,18 +4,18 @@
     align-items: center;
     width: 100%;
     max-width: 600px;
-    margin: auto;
+    margin: 50px auto;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #173f5f7e;
     position: relative;
 }
 
 .image-container {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     margin-bottom: 20px;
     overflow: hidden;
-    border-radius: 50%;
+    border-radius: 20%;
 }
 
 .image-container img {
@@ -32,7 +32,7 @@
     margin: 5px;
     background: none;
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #173F5F;
     width: 100%;
 }
 
@@ -107,9 +107,11 @@
 }
 
 .edit-button:hover {
-    background: #173F5F;
+    background: #F39C12;
+    transition: 200ms;
 }
 
 .profile-container label {
     font-weight: bold;
+    color: #173F5F;
 }

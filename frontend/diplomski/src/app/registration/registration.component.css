@@ -8,13 +8,14 @@ form {
 }
 
 form div {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
+    color: #173F5F;
 }
 
 form input {
@@ -38,9 +39,9 @@ form div div {
 form button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #173F5F;
     border: none;
-    color: white;
+    color: #FAFFFF;
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
@@ -48,7 +49,8 @@ form button {
 }
 
 form button:hover {
-    background-color: #0056b3;
+    background-color: #F39C12;
+    color: #FAFFFF;
 }
 
 form button:disabled {
@@ -58,4 +60,11 @@ form button:disabled {
 
 #registrationHeader{
     text-align: center;
+    font-size: 2em;
+    color: #173F5F;
+    margin-top: 20px;
+    font-weight: 600;
+    border-bottom: 3px solid #173F5F;
+    display: inline-block;
+    padding-bottom: 5px;
 }

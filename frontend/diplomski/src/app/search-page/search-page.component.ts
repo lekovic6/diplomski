@@ -17,16 +17,7 @@ export class SearchPageComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.searchParam = params['searchParam'];
-
-      this.bookService.searchBooks(this.searchParam, this.currentPage, this.itemsPerPage).subscribe((books:Book[]) => {
-        this.booksToShow = books;
-      });
-
-      // Get the total number of books
-      this.bookService.getTotalBooksCount(this.searchParam).subscribe((count:number) => {
-        this.totalItems = count;
-      });
-
+      this.search();
     })
   }
 
@@ -66,6 +57,7 @@ export class SearchPageComponent {
   }
 
   onRadioChange() {
+    this.currentPage = 1;
     this.search();
   }
 

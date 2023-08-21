@@ -45,5 +45,31 @@ export class UserService {
     return this.http.post(this.uri + '/user/updateUserDetails', data);
   }
 
+  searchUsers(searchParam, currentPage, itemsPerPage){
+    const data={
+      searchParam:searchParam,
+      currentPage:currentPage,
+      itemsPerPage:itemsPerPage,
+    }
+
+    return this.http.post(this.uri + '/user/searchUsers', data);
+  }
+
+  getTotalUsersCount(searchParam){
+    const data={
+      searchParam:searchParam,
+    }
+
+    return this.http.post(this.uri + '/user/getTotalUsersCount', data);
+  }
+
+  setBlockFlag(user, blockedFlag){
+    const data={
+      user:user,
+      blockedFlag:blockedFlag
+    }
+
+    return this.http.post(this.uri + '/user/setBlockFlag', data);
+  }
   
 }

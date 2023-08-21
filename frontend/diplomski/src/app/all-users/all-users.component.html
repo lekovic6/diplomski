@@ -1,0 +1,41 @@
+<div class="container">
+
+    <div class="row searchBarRow justify-content-sm-center">
+        <div class="col col-sm-12">
+            <input type="text" [(ngModel)]="searchParam" name="search" id="searchInput" placeholder="Search users by username..." (keyup)="searchUsers()">
+        </div>
+    </div>
+
+    <div *ngIf="usersToShow && usersToShow.length > 0">
+        <div *ngFor="let user of usersToShow | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems };" class="row justify-content-sm-center user-card">
+
+            <div class="col col-sm-1">
+                <img class="user-image" [src]="'data:' + user.profilePicture?.contentType + ';base64, ' + user.profilePicture?.data" alt="slika">
+            </div>
+
+            <div class="col col-sm">
+                <div class="user-username">{{user.username}}</div>
+                <div class="user-name">{{user.firstname}} {{user.lastname}}</div>
+                <div class="user-mail">{{user.email}}</div>
+            </div>
+
+            <div class="col col-sm-1 action-btns">
+                <button class="unblock-btn" (click)="unblock(user)" *ngIf="user.blocked == true"> Unblock </button>
+                <button class="block-btn" (click)="block(user)" *ngIf="user.blocked == false"> Block </button>
+            </div>
+
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-center">
+            <pagination-controls (pageChange)="currentPage = $event; searchUsers()"></pagination-controls>
+        </div>
+
+    </div>
+
+    <!-- Display this when there are no books to show -->
+    <div *ngIf="!usersToShow || usersToShow.length === 0">
+        <h3>There are no users with this username. Try something else!</h3>
+    </div>
+
+</div>

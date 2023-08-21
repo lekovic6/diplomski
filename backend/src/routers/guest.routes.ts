@@ -3,8 +3,8 @@ import { GuestController } from '../controllers/guest.controller';
 
 const guestRouter = express.Router();
 
-guestRouter.route('/registerClient').post(
-    (req, res) => new GuestController().registerClient(req, res)
+guestRouter.route('/registerUser').post(
+    (req, res) => new GuestController().registerUser(req, res)
 )
 
 guestRouter.route('/uniqueUsername').post(

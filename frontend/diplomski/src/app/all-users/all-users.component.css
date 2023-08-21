@@ -1,0 +1,98 @@
+/* ---------------- SEARCH BAR ---------------- */
+.searchBarRow {
+    margin-top: 20px;
+    /* Optional - Adds a little space on top */
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #173F5F;
+    border-radius: 5px 5px 5px 5px;
+    /* Rounded on the left side */
+    outline: none;
+    color: #173F5F;
+    /* Text color */
+    font-weight: bold;
+    background-color: #FAFFFF;
+    transition: border-color 0.3s ease;
+    /* Smooth transition for border color */
+}
+
+#searchInput:focus {
+    border-color: #F39C12;
+    /* When the input is focused, its border color changes to orange */
+}
+
+/* Responsive for smaller screens (Optional) */
+@media (max-width: 575.98px) {
+
+    #searchInput,
+    .searchButton {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ---------------- END SEARCH BAR ---------------- */
+
+/* User Card Styles */
+.user-card {
+    background-color: #173F5F;
+    border-radius: 8px;
+    border: 3px solid #173F5F;
+    margin: 10px 0;
+    padding: 10px;
+    color: #FAFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.user-image {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin-right: 25px;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-username {
+    font-weight: 600;
+}
+
+.user-name, .user-mail {
+    margin-top: 5px;
+    color: #F39C12; /* Use the accent color for personal details */
+}
+
+/* Button Styles */
+.block-btn, .unblock-btn {
+    padding: 5px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    margin-top: 5px;
+}
+
+.block-btn {
+    background-color: #e91212; /* Red Color */
+    color: #FAFFFF;
+}
+
+.unblock-btn {
+    background-color: #4CAF50; /* Green Color */
+    color: #FAFFFF;
+}
+
+.action-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+

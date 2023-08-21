@@ -6,8 +6,8 @@
             <img class="author-image" [src]="authorToShow.coverData64" alt="Author Image">
     
             <div class="admin-actions" *ngIf="currentLoggedUser?.role == 'admin'">
-                <button [routerLink]="['/editAuthorDetails', authorId]">Edit author</button>
-                <button (click)="deleteAuthor()">Delete author</button>
+                <button class="edit-btn" [routerLink]="['/editAuthorDetails', authorId]">Edit author</button>
+                <button class="delete-btn" (click)="deleteAuthor()">Delete author</button>
             </div>
         </div>
     

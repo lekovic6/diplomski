@@ -203,7 +203,57 @@ export class UserController {
         );
     }
     
+    searchUsers(req: express.Request, res: express.Response) {
+        let searchParam = req.body.searchParam;
+        let currentPage= req.body.currentPage;
+        let itemsPerPage= req.body.itemsPerPage;
 
+        User.find({ 'username': new RegExp(searchParam, 'i'), 'role':'user' })
+            .skip((currentPage - 1) * itemsPerPage)
+            .limit(itemsPerPage)
+            .exec((err, books) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('Server error');
+                }
+                else {
+                    res.json(books);
+                }
+            });
+    }
+
+    getTotalUsersCount(req: express.Request, res: express.Response) {
+        let searchParam = req.body.searchParam;
+
+        User.countDocuments({ 'username': new RegExp(searchParam, 'i'), 'role':'user' }, (err, count) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send('Error getting total users count');
+            } else {
+                res.json(count);
+            }
+        });
+    }
+
+    setBlockFlag(req: express.Request, res: express.Response) {
+        let user = req.body.user;
+        let blockedFlag = req.body.blockedFlag
+
+        User.collection.updateOne({ 'username': user.username },
+            {
+                $set: {
+                    'blocked': blockedFlag 
+                }
+            }, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ 'message': 'Error in updating user details.' }); // Changed error message
+                } else {
+                    res.status(200).json({ 'message': 'updated' });   
+                }
+            }
+        );
+    }
 
 }
 

@@ -37,9 +37,9 @@ export class RegistrationComponent implements OnInit {
   
         window.URL.revokeObjectURL(img.src);
   
-        if (width < 100 || width > 300 || height < 100 || height > 300) {
+        if (width < 100 || width > 500 || height < 100 || height > 500) {
           this.dimensionErrorMassage =
-            'Invalid dimensions. Image dimensions should be between 100x100 and 300x300 pixels.';
+            'Invalid dimensions. Image dimensions should be between 100x100 and 500x00 pixels.';
           resolve(false);
         } else {
           this.dimensionErrorMassage = null;
@@ -86,16 +86,14 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
       // for both
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       userType: ['user'],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z][A-Za-z\\d@$!%*#?&]{6,11}$') ]],
       confirmPassword: ['', Validators.required],
-      profilePicture: [null],
-
-      // only client
-      firstname: [''], lastname: [''], phoneNumber: [''],
-
+      profilePicture: [null]
     }, {
       validator: this.passwordMatchValidator // Custom validator function
     });
@@ -125,7 +123,7 @@ export class RegistrationComponent implements OnInit {
     }
 
 
-    this.registrationService.registerClient(username, password, email, role, firstname, lastname, this.base64Data, this.base64ContentType).subscribe(resp => {
+    this.registrationService.registerUser(username, password, email, role, firstname, lastname, this.base64Data, this.base64ContentType).subscribe(resp => {
       if (resp['message'] == "user added") {
         alert("Registration succesful!");
       }

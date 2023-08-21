@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GuestController = void 0;
 const user_1 = __importDefault(require("../models/user"));
 class GuestController {
-    registerClient(req, res) {
+    registerUser(req, res) {
         let newClient = new user_1.default({
             username: req.body.username,
             password: req.body.password,
@@ -19,6 +19,7 @@ class GuestController {
                 contentType: req.body.base64ContentType
             },
             favouritesList: req.body.favouritesList,
+            blocked: false
         });
         newClient.save().then(user => {
             res.status(200).json({ 'message': 'user added' });

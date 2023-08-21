@@ -51,4 +51,17 @@ userRouter.route('/updateUserDetails').post(
     (req, res) => new UserController().updateUserDetails(req, res)
 )
 
+userRouter.route('/searchUsers').post(
+    (req, res) => new UserController().searchUsers(req, res)
+)
+
+userRouter.route('/getTotalUsersCount').post(
+    (req, res) => new UserController().getTotalUsersCount(req, res)
+)
+
+userRouter.route('/setBlockFlag').post(
+    (req, res) => new UserController().setBlockFlag(req, res)
+)
+
+
 export default userRouter;

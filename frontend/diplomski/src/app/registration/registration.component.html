@@ -1,4 +1,4 @@
-<form [formGroup]="registrationForm" >
+<form [formGroup]="registrationForm">
 
     <div>
         <h2 id="registrationHeader">Registration</h2>
@@ -32,7 +32,7 @@
         <label>Email:</label>
         <input type="email" formControlName="email">
         <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
-        Email is required and must be a valid email address.
+            Email is required and must be a valid and unique email address.
         </div>
     </div>
 
@@ -40,7 +40,8 @@
         <label>Password:</label>
         <input type="password" formControlName="password">
         <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
-            Password is required and should be 7 to 12 characters long, starting with a letter, and contain at least one uppercase letter, one lowercase letter, one digit, and one special character (@, $, !, %, *, ?, &).
+            Password is required and should be 7 to 12 characters long, starting with a letter, and contain at least one
+            uppercase letter, one digit, and one special character (@, $, !, %, *, ?, &).
         </div>
     </div>
 
@@ -54,11 +55,13 @@
 
     <div>
         <label for="profilePicture">Profile Picture:</label>
-        <input type="file" id="profilePicture" accept=".jpg, .png" formControlName="profilePicture" (change)="onFileChange($event)">
+        <input type="file" id="profilePicture" accept=".jpg, .png" formControlName="profilePicture"
+            (change)="onFileChange($event)">
         <div>
             {{dimensionErrorMassage}}
         </div>
     </div>
 
-    <button type="submit" [disabled]="registrationForm.invalid || dimensionErrorFlag" (click)="register()" id="registerButton">Register</button>
+    <button type="submit" [disabled]="registrationForm.invalid || dimensionErrorFlag" (click)="register()"
+        id="registerButton">Register</button>
 </form>

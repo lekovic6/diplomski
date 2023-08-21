@@ -18,7 +18,7 @@ const dbName = 'diplomski';
     const db = client.db(dbName);
 
     let brojac = 1;
-    const NumOfBooks = 5;
+    const NumOfBooks = 15;
     const URLS = [
       { url: `http://openlibrary.org/subjects/science_fiction.json?limit=${NumOfBooks}`, genre: 'science_fiction' },
       { url: `http://openlibrary.org/subjects/fantasy.json?limit=${NumOfBooks}`, genre: 'fantasy' },

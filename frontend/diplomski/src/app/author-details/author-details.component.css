@@ -30,19 +30,7 @@
     margin-top: 20px;
 }
 
-.admin-actions button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-    background-color: #F39C12;
-    color: #FAFFFF;
-}
 
-.admin-actions button:last-child {
-    background-color: #173F5F;
-}
 
 h2, h4 {
     color: #173F5F;
@@ -71,11 +59,61 @@ p {
     text-decoration: underline;
 }
 
+.actions button {
+    flex: 1;
+    /* Allow buttons to grow and take available space */
+    padding: 10px 0;
+    /* Adjust padding to make the button look better */
+    text-align: center;
+    /* Center the text of the button */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
 
+button {
+    background-color: #173F5F;
+    color: #FAFFFF;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* ... (rest of your CSS) ... */
+
+.admin-actions {
+    display: flex;
+    gap: 2px; /* This will add a small gap between the buttons */
+}
+
+.edit-btn, .delete-btn {
+    width: 50%; /* Makes each button take up half the available space */
+    display: block; /* Make them block elements so they fill the space */
+    text-align: center; /* Align text to center */
+}
+
+/* Styling for the edit button */
+.edit-btn {
+    background-color: #173F5F; /* Deep blue color */
+}
+
+.edit-btn:hover {
+    background-color: #F39C12; /* Orange color on hover */
+}
+
+/* Styling for the delete button */
+.delete-btn {
+    background-color: #e91212; /* Red color */
+}
+
+.delete-btn:hover {
+    background-color: #F39C12; /* Orange color on hover */
+}
 
 /* ---------------- END of AUTHOR DETAILS PART ---------------- */
-
-
 
 
 

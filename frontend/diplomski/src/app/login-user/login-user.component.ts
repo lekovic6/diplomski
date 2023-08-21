@@ -14,31 +14,30 @@ export class LoginUserComponent {
 
   username: string;
   password: string;
-
-  
+  badCredentials:Boolean = false;
+  errorMessage:String = "";
 
   loginUser(){
     this.loginService.loginUser(this.username, this.password).subscribe((user:User) =>{
       if (user) {
 
-        /* ne trea mi ovo
-        if (user.verifiedByAdmin == false){
-          alert('You are not yet verified by Admins! Try again later!');
+        if (user.blocked == true){
+          this.badCredentials = true;
+          this.errorMessage = "Your profile has been blocked by admins!";
           return;
         }
-        if (user.declined == true){
-          alert('Your access has been declined!');
-          return;
-        }
-        */
-
-        // cuvanje loggovanog usera
+       
         localStorage.setItem('user', JSON.stringify(user));
         this.loginService.isLoggedinSubject.next(true); // sending info to loginService that someone is logged in
         this.router.navigate(['/']);
         
       }
-      else alert('Bad Credentials!');
+      else {
+        this.badCredentials = true;
+        this.errorMessage = "Bad credentials";
+
+      }
+      
     })
   }
 

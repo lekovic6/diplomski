@@ -18,6 +18,7 @@ const UserSchema = new Schema({
         contentType: String
     },
     favouritesList: [mongoose_1.default.Schema.Types.ObjectId],
+    blocked: Boolean
 });
 exports.default = mongoose_1.default.model("User", UserSchema, 'users');
 //# sourceMappingURL=user.js.map

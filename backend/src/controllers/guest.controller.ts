@@ -3,7 +3,7 @@ import User from '../models/user';
 
 export class GuestController {
 
-    registerClient(req:express.Request, res:express.Response){
+    registerUser(req:express.Request, res:express.Response){
         let newClient = new User({
             username:req.body.username,
             password:req.body.password,
@@ -19,6 +19,7 @@ export class GuestController {
             },
 
             favouritesList: req.body.favouritesList,
+            blocked:false
         })  
 
         newClient.save().then(user=>{

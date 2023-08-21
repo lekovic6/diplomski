@@ -16,6 +16,7 @@ import { MyListComponent } from './my-list/my-list.component';
 import { PendingReviewsComponent } from './pending-reviews/pending-reviews.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -39,6 +40,8 @@ const routes: Routes = [
   
   {path: 'profileDetails', component:ProfileDetailsComponent},
   {path: 'changePassword', component:ChangePasswordComponent},
+
+  {path: 'allUsers', component:AllUsersComponent},
   
 ];
 

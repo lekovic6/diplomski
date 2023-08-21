@@ -20,7 +20,7 @@ const UserSchema = new Schema({
     },
 
     favouritesList:[mongoose.Schema.Types.ObjectId],
-
+    blocked:Boolean
 })
 
 

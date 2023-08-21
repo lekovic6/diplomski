@@ -3,6 +3,9 @@
         <h2>Login</h2>
         <form (submit)="loginUser()" class="login-form">
             <input type="text" name="username" [(ngModel)]="username" placeholder="Username" required class="form-input">
+            <p class="badCredentials" *ngIf="badCredentials">
+                {{errorMessage}}
+            </p>
             <input type="password" name="password" [(ngModel)]="password" placeholder="Password" required class="form-input">
             <button type="submit" class="submit-btn">Login</button>
         </form>

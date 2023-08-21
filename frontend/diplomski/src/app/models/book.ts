@@ -20,6 +20,8 @@ export class Book{
     coverContentType64: string;
 
     reviews:[Review]
+    
+    averageRating?:number;
 }
     
 export class Review{

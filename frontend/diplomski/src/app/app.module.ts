@@ -24,6 +24,7 @@ import { MyListComponent } from './my-list/my-list.component';
 import { PendingReviewsComponent } from './pending-reviews/pending-reviews.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     MyListComponent,
     PendingReviewsComponent,
     ProfileDetailsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AllUsersComponent
   ],
   imports: [
     BrowserModule,

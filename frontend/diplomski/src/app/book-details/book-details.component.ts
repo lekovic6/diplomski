@@ -167,5 +167,17 @@ export class BookDetailsComponent {
       }
     })
   }
+
+  deleteReviewByAdmin(review){
+    this.bookService.deleteReview(this.bookId, review).subscribe(resp=>{
+      if(resp["message"] == "deleted"){
+        alert("Review deleted!")!
+        window.location.reload();
+      }
+      else{
+        alert("error while deleting a review")
+      }
+    })
+  }
 }
 

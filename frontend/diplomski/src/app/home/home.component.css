@@ -167,13 +167,31 @@ h3.text-dark {
 }
 
 
+.book-container {
+    width: 170px; /* The width of the .rowimg */
+    margin-right: 14px; /* Taken from the .rowimg margin-right */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+}
+
+.book-title, .book-rating {
+    width: 100%; /* Makes the title and rating divs take full width of the container */
+    text-align: center; /* Center the text */
+    overflow: hidden; /* If the title is too long, it won't spill out */
+    white-space: nowrap; /* Prevents the title/rating from wrapping into multiple lines */
+    text-overflow: ellipsis; /* If the title/rating is too long, it'll end with ... */
+    margin-top: 5px; /* Adds a bit of space above the title and rating */
+    font-weight: bold;
+}
+
 
 .rowimg {
     flex: 0 0 auto;
     height: 100px;
     object-fit: cover;
     width: 170px;     /* Make width auto to maintain aspect ratio */
-    margin-right: 14px;
+    margin-right: 0; 
     border-radius: 8px;
     transition: transform 450ms, box-shadow 450ms;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

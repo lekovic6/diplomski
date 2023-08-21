@@ -29,31 +29,46 @@ export class HomeComponent implements OnInit {
 
     this.bookService.getRandomBooks(this.numberOfFeaturedOnPage).subscribe((randomFeaturedBooks: Book[]) => {
       this.featuredBooks = randomFeaturedBooks;
-
       this.featuredBooks.forEach(book => {
-        let avgRating = 0;
-        let numOfRatings = book.reviews.length;
-        book.reviews.forEach(review => {
-          avgRating = avgRating + review.rating;
-        });
-        if (numOfRatings > 0){
-          avgRating = avgRating / numOfRatings;
-        }
+        const acceptedReviews = book.reviews.filter(review => review.accepted);
+        const totalRating = acceptedReviews.reduce((acc, review) => acc + review.rating, 0);
+        const numOfRatings = acceptedReviews.length;
+        book.averageRating = numOfRatings ? parseFloat((totalRating / numOfRatings).toFixed(2)) : 0;
       });
-
 
     })
 
     this.bookService.getRandomBooks(this.numberOfTopPicksOnPage).subscribe((randomTopPickBooks: Book[]) => {
       this.topPicks = randomTopPickBooks;
+      this.topPicks.forEach(book => {
+        const acceptedReviews = book.reviews.filter(review => review.accepted);
+        const totalRating = acceptedReviews.reduce((acc, review) => acc + review.rating, 0);
+        const numOfRatings = acceptedReviews.length;
+        book.averageRating = numOfRatings ? parseFloat((totalRating / numOfRatings).toFixed(2)) : 0;
+      });
+
     })
 
     this.bookService.getAllBooksFromGenre('science_fiction').subscribe((sciFiBooks: Book[]) => {
       this.sciFiBooks = sciFiBooks;
+      this.sciFiBooks.forEach(book => {
+        const acceptedReviews = book.reviews.filter(review => review.accepted);
+        const totalRating = acceptedReviews.reduce((acc, review) => acc + review.rating, 0);
+        const numOfRatings = acceptedReviews.length;
+        book.averageRating = numOfRatings ? parseFloat((totalRating / numOfRatings).toFixed(2)) : 0;
+      });
+
     })
 
     this.bookService.getAllBooksFromGenre('fantasy').subscribe((fantasyBooks: Book[]) => {
       this.fantasyBooks = fantasyBooks;
+      this.fantasyBooks.forEach(book => {
+        const acceptedReviews = book.reviews.filter(review => review.accepted);
+        const totalRating = acceptedReviews.reduce((acc, review) => acc + review.rating, 0);
+        const numOfRatings = acceptedReviews.length;
+        book.averageRating = numOfRatings ? parseFloat((totalRating / numOfRatings).toFixed(2)) : 0;
+      });
+
     })
 
     this.bookService.getAllCategories().subscribe((categories: Category[]) => {

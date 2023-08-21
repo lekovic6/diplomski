@@ -28,7 +28,6 @@ export class PendingReviewsComponent {
   acceptReview(bookId: string, reviewUsername: string) {
     this.bookService.respondToReview(bookId, reviewUsername, true).subscribe(resp=>{
       if(resp["message"] == 'updated'){
-        alert("Review accepted!")
         //window.location.reload();
         // ili 
         this.fetchPendingReviews();
@@ -42,7 +41,6 @@ export class PendingReviewsComponent {
   declineReview(bookId: string, reviewUsername: string) {
     this.bookService.respondToReview(bookId, reviewUsername, false).subscribe(resp=>{
       if(resp["message"] == 'deleted'){
-        alert("Review declined!")
         //window.location.reload();
         // ili 
         this.fetchPendingReviews();

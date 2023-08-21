@@ -31,6 +31,10 @@ export class BookDetailsComponent {
       this.bookService.getBookById(this.bookId).subscribe((book:Book)=>{
         this.bookToShow = book;
 
+        const totalRating = this.bookToShow.reviews.reduce((acc, review) => acc + review.rating, 0);
+        const numOfRatings = this.bookToShow.reviews.length;
+        this.bookToShow.averageRating = numOfRatings ? parseFloat((totalRating / numOfRatings).toFixed(2)) : 0;
+
         this.bookService.getCategoryShowName(this.bookToShow.genre).subscribe((category:Category)=>{
           this.categoryShowName = category.showName;
         })
@@ -54,13 +58,13 @@ export class BookDetailsComponent {
         }
         
         // Checking whether user already has a review for this book
-        if (this.bookToShow.reviews != null && this.isUserLoggedIn == true){
+        if (this.bookToShow.reviews != null){
           this.bookToShow.reviews.forEach(review => {
             if (review.accepted == true){
               this.noReviewsToShow = false;
             }
 
-            if(review.username == this.loginService.getUser().username){
+            if(review.username == this.loginService.getUser()?.username){
               this.hasReview = true;
               this.myReview = review;
             }

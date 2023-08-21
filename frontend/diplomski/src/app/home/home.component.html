@@ -44,8 +44,16 @@
 
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let featBook of featuredBooks">
-                    <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image"
-                        [routerLink]="['/bookDetails', featBook._id]">
+                    <div class="book-container">
+                        <img class="rowimg largeposter" [src]="featBook.coverData64" alt="Book Image"
+                            [routerLink]="['/bookDetails', featBook._id]">
+                        <div class="book-title">
+                            {{featBook.title}}
+                        </div>
+                        <div class="book-rating">
+                            ⭐{{featBook.averageRating}}/10
+                        </div>
+                    </div>
                 </ng-container>
             </div>
         </div>
@@ -56,8 +64,16 @@
 
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of featuredBooks">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
-                        [routerLink]="['/bookDetails', book._id]">
+                    <div class="book-container">
+                        <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                            [routerLink]="['/bookDetails', book._id]">
+                        <div class="book-title">
+                            {{book.title}}
+                        </div>
+                        <div class="book-rating">
+                            ⭐{{book.averageRating}}/10
+                        </div>
+                    </div>
                 </ng-container>
             </div>
         </div>
@@ -68,8 +84,16 @@
 
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of sciFiBooks">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
-                        [routerLink]="['/bookDetails', book._id]">
+                    <div class="book-container">
+                        <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                            [routerLink]="['/bookDetails', book._id]">
+                        <div class="book-title">
+                            {{book.title}}
+                        </div>
+                        <div class="book-rating">
+                            ⭐{{book.averageRating}}/10
+                        </div>
+                    </div>
                 </ng-container>
             </div>
         </div>
@@ -80,8 +104,16 @@
 
             <div class="rowposter mt-1 p-1 mb-4">
                 <ng-container *ngFor="let book of fantasyBooks">
-                    <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
-                        [routerLink]="['/bookDetails', book._id]">
+                    <div class="book-container">
+                        <img class="rowimg largeposter" [src]="book.coverData64" alt="Book Image"
+                            [routerLink]="['/bookDetails', book._id]">
+                        <div class="book-title">
+                            {{book.title}}
+                        </div>
+                        <div class="book-rating">
+                            ⭐{{book.averageRating}}/10
+                        </div>
+                    </div>
                 </ng-container>
             </div>
         </div>
